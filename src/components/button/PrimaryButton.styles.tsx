@@ -11,7 +11,7 @@ export const PrimaryButtonStyle = StyleSheet.create({
     },
     text: {
         color: colors.light.buttonTextColor,
-        fontFamily: 'circular-medium',
-        fontSize: 16
+        fontFamily: 'circular-bold',
+        fontSize: 16,
     }
 })
