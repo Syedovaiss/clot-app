@@ -11,7 +11,7 @@ export const TextInputField = (props: TextInputProps) => {
         autoCorrect={props.autoCorrect ? props.autoCorrect : false}
         onChangeText={(text) => {
             setInputText(text)
-            props.onTextSubmit(inputText)
+            props.onTextSubmit(text)
         }}
         value={inputText}
         placeholder={props.placeholder}

@@ -1,4 +1,4 @@
-import LoginScreen from '../login/Login';
+import LoginScreen from '../login/ui/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';

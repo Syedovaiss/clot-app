@@ -8,8 +8,7 @@ import { StyleSheet } from "react-native";
             flex: 1,
             backgroundColor: colors.splashBackground,
             alignItems:'center',
-            justifyContent:'center',
-            marginBottom: 16
+            justifyContent:'center'
         }
     })
 }

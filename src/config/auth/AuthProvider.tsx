@@ -10,11 +10,12 @@ import React, {
     useState,
 } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { isNotEmpty, isNotNull } from "../../utils/Helpers";
 
 type AuthContextType = {
-    user: { [key: string]: any } | null;
-    setUser: Dispatch<SetStateAction<{ [key: string]: any } | null>>;
-    saveUserData: (data: { token: string; userId: string }) => Promise<void>;
+    user: string | null;
+    setUser: Dispatch<SetStateAction<string | null>>;
+    saveUserData: (data: string | null) => Promise<void>;
     clearUserData: () => Promise<void>;
 };
 
@@ -29,7 +30,7 @@ function useAuth(): AuthContextType {
 }
 
 const AuthProvider = (props: { children: ReactNode }): ReactElement => {
-    const [user, setUser] = useState<{ [key: string]: any } | null>(null);
+    const [user, setUser] = useState<string | null>(null);
 
     useEffect(() => {
         const loadUserData = async () => {
@@ -37,7 +38,7 @@ const AuthProvider = (props: { children: ReactNode }): ReactElement => {
                 const token = await AsyncStorage.getItem('accessToken');
                 const userId = await AsyncStorage.getItem('userId');
                 if (token && userId) {
-                    setUser({ token, userId });
+                    setUser(token);
                 }
             } catch (error) {
                 console.error('Failed to load user data:', error);
@@ -47,11 +48,12 @@ const AuthProvider = (props: { children: ReactNode }): ReactElement => {
         loadUserData();
     }, []);
 
-    const saveUserData = async (data: { token: string; userId: string }) => {
+    const saveUserData = async (data: string | null) => {
         try {
-            await AsyncStorage.setItem('accessToken', data.token);
-            await AsyncStorage.setItem('userId', data.userId);
-            setUser(data);
+            if (isNotNull(data) && isNotEmpty(data)) {
+                await AsyncStorage.setItem('accessToken', data ? data : "");
+                setUser(data);
+            }
         } catch (error) {
             console.error('Failed to save user data:', error);
         }
