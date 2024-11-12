@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { LoginStyle } from "./Login.styles";
 import { TitleText } from "../../../../components/text/TitleText";
 import { TextInputField } from "../../../../components/text-input/TextInputField";
@@ -12,9 +12,9 @@ import Toast from 'react-native-simple-toast';
 import useLoginResult from "../hooks/useLoginResult";
 import { isNotEmpty } from "../../../../utils/Helpers";
 import { useAuth } from "../../../../config/auth/AuthProvider";
+import { LoginScreenProps } from "./Login.props";
 
-const LoginScreen = () => {
-    const auth = useAuth()
+const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const [validate, errorMessage, result] = useLoginValidation();
     const [login, loginResult, loginErrorMessage] = useLoginResult();
     const [email, setEmail] = useState('')
@@ -25,8 +25,8 @@ const LoginScreen = () => {
             login(email, password)
             if (isNotEmpty(loginResult)) {
                 handleResult(loginResult)
-                auth.saveUserData(loginResult)
                 Toast.show("Logged in successfully!", Toast.LONG)
+                navigation.navigate('Home')
             }
             if (isNotEmpty(loginErrorMessage)) {
                 Toast.show(loginErrorMessage ? loginErrorMessage : '', Toast.LONG)
@@ -38,12 +38,16 @@ const LoginScreen = () => {
                 Toast.LONG
             )
         }
-    }, [result, errorMessage,loginResult,loginErrorMessage])
+    }, [result, errorMessage, loginResult, loginErrorMessage])
     const handleLogin = async () => {
         validate(email, password)
     }
     const handleResult = (accessToken: string | null) => {
-
+        const auth = useAuth()
+        auth.saveUserData(accessToken)
+    }
+    const onCreateNewAccount = () => {
+        navigation.navigate('RegisterScreen')
     }
     return (
         <View style={LoginStyle.container}>
@@ -67,7 +71,9 @@ const LoginScreen = () => {
             />
             <View style={LoginStyle.horizontalView}>
                 <Text style={LoginStyle.body}>Dont have an Account ? </Text>
-                <Text style={LoginStyle.bodyBold}>Create One</Text>
+                <TouchableOpacity onPress={onCreateNewAccount}>
+                    <Text style={LoginStyle.bodyBold}>Create One</Text>
+                </TouchableOpacity>
             </View>
             <PrimaryButton title="Login" onClick={handleLogin} />
             <AppleButton title="Continue with Apple" onClick={() => {

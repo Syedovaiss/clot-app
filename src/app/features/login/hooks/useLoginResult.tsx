@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ClothAPI } from "../../../api/ClothApi";
 import { ENDPOINT_LOGIN } from "../../../../utils/Constants";
-import Config from "react-native-config";
 
 export default (): [
     (email: string, password: string) => void,

@@ -19,5 +19,6 @@ export const TextInputField = (props: TextInputProps) => {
         secureTextEntry={props.secureTextEntry ? props.secureTextEntry : false}
         keyboardType={props.keyboardType ? props.keyboardType : 'default'}
         returnKeyType={props.returnKeyType ? props.returnKeyType : 'done'}
+        maxLength={props.maxLength ? props.maxLength : 1000}
     />
 }

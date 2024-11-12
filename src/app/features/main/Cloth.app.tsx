@@ -8,9 +8,9 @@ import { HomeScreen } from '../home/HomeScreen';
 import { NotificationsScreen } from '../notifications/NotificationScreen';
 import { OrdersScreen } from '../orders/OrdersScreen';
 import { ProfileScreen } from '../profile/ProfileScreen';
-import { Screen } from 'react-native-screens';
 import { StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
+import { RegisterScreen } from '../register/ui/Register.ui';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -29,8 +29,12 @@ export const Cloth = () => {
                     headerShown: false
                 }}>
                     <AuthStack.Screen
-                        name='Login'
+                        name='LoginScreen'
                         component={LoginScreen}
+                    />
+                    <AuthStack.Screen
+                        name='RegisterScreen'
+                        component={RegisterScreen}
                     />
                 </AuthStack.Navigator>}
             </NavigationContainer>
