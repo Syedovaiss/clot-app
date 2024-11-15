@@ -15,7 +15,7 @@ export default (): [
     const signUp = async (firstName: string, lastName: string, email: string, password: string, phoneNumber: string, gender: string) => {
 
         try {
-            const payload = {
+            const SignUpData = {
                 firstName,
                 lastName,
                 email,
@@ -23,10 +23,12 @@ export default (): [
                 phoneNumber,
                 gender
             }
+            console.log(`Payload:${SignUpData}`)
             const response = await ClothAPI().post(
                 ENDPOINT_SIGNUP,
-                payload
+                SignUpData
             )
+            console.log(`Response:${response}`)
             if (response && response.data) {
                 setResult(response.data.message);
                 console.log("Signup Successful, token:", response.data);
@@ -35,6 +37,7 @@ export default (): [
                 console.log("Invalid Data!")
             }
         } catch (error: any) {
+            console.log(error)
             if (error.response) {
                 const errorCode = error.response.status;
                 const errorData = error.response.data;
@@ -47,6 +50,7 @@ export default (): [
                     console.log(`Error: ${errorCode}`);
                 }
             } else if (error.request) {
+                console.log(error.request)
                 console.log("No response received from server");
                 setError("No response from server. Please try again later.");
             } else {

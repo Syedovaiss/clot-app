@@ -26,7 +26,7 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             if (isNotEmpty(loginResult)) {
                 handleResult(loginResult)
                 Toast.show("Logged in successfully!", Toast.LONG)
-                navigation.navigate('Home')
+                navigation.navigate('Tabs')
             }
             if (isNotEmpty(loginErrorMessage)) {
                 Toast.show(loginErrorMessage ? loginErrorMessage : '', Toast.LONG)
@@ -40,7 +40,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         }
     }, [result, errorMessage, loginResult, loginErrorMessage])
     const handleLogin = async () => {
-        validate(email, password)
+        // validate(email, password)
+        navigation.navigate('Tabs')
     }
     const handleResult = (accessToken: string | null) => {
         const auth = useAuth()

@@ -6,6 +6,6 @@ export const ClothAPI = (token?: string) => axios.create({
     baseURL: Config.BASE_URL,
     headers: {
         Authorization: token ? token : EMPTY_STRING,
-        "Content-Type":'application/json'
+        "Content-Type": 'application/json'
     }
 })

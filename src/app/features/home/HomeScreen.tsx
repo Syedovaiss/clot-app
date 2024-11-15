@@ -1,8 +1,8 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 export const HomeScreen = () => {
     return (
-        <Text> Home Screen</Text>
+        <View style={{backgroundColor:'#FFFFFF', flex:1}}></View>
     )
 }

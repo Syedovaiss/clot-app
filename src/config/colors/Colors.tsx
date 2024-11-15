@@ -9,7 +9,11 @@ const colors = {
         splashBackground:'#8E6CEF',
         fieldBackground: '#F4F4F4',
         placeholderColor: '#272727',
-        buttonTextColor: '#FFFFFF'
+        buttonTextColor: '#FFFFFF',
+        tabBarInActiveColor: '#27272780',
+        tabBarActiveColor: '#8E6CEF',
+        white:'#FFFFFF',
+        bottomTabBackgroundColor:'#FFFFFF'
     },
     dark: {
         backgroundColor: '#000000',
@@ -18,7 +22,11 @@ const colors = {
         splashBackground:'#8E6CEF',
         fieldBackground: '#F4F4F4',
         placeholderColor: '#272727',
-        buttonTextColor: '#FFFFFF'
+        buttonTextColor: '#FFFFFF',
+        tabBarInActiveColor: '#27272780',
+        tabBarActiveColor: '#8E6CEF',
+        white:'#FFFFFF',
+        bottomTabBackgroundColor:'#FFFFFF'
     },
   };
   export const useColors = () => {

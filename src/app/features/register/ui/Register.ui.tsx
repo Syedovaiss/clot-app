@@ -22,25 +22,34 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     const handleSignup = () => {
         if (!isLoading)
-            validate(firstName, lastName, email, password, phoneNumber, gender)
+            console.log("Validating...")
+        validate(firstName, lastName, email, password, phoneNumber, gender)
+        console.log("Loading True")
         setLoading(true)
     }
 
     useEffect(() => {
         if (validationResult === ValidationResult.Valid) {
+            console.log("Validation Success..")
+            console.log("Hitting API")
             signup(firstName, lastName, email, password, phoneNumber, gender)
-            if (result == ValidationResult.Valid) {
+            if (result === ValidationResult.Valid) {
+                console.log("API Success!")
                 Toast.show("Sign up successfully!", Toast.LONG)
+                console.log("Loading false")
                 setLoading(false)
                 navigation.navigate('LoginScreen')
             }
             if (isNotEmpty(error)) {
+                console.log("API Error")
                 Toast.show(error, Toast.LONG)
+                console.log("Loading false")
                 setLoading(false)
             }
         }
         if (validationResult === ValidationResult.InValid) {
             Toast.show(validationError, Toast.LONG)
+            console.log("Loading false")
             setLoading(false)
         }
     }, [validationError, validationResult, error, result])
