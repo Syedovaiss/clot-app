@@ -20,7 +20,7 @@ export const Cloth = () => {
     return (
         <SafeAreaView style={style.container}>
             <NavigationContainer>
-                {user ? <Tab.Navigator>
+                {user ? <Tab.Navigator screenOptions={{headerShown:false}}>
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Notifications" component={NotificationsScreen} />
                     <Tab.Screen name="Orders" component={OrdersScreen} />

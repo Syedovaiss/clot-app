@@ -36,8 +36,7 @@ const AuthProvider = (props: { children: ReactNode }): ReactElement => {
         const loadUserData = async () => {
             try {
                 const token = await AsyncStorage.getItem('accessToken');
-                const userId = await AsyncStorage.getItem('userId');
-                if (token && userId) {
+                if (isNotEmpty(token)) {
                     setUser(token);
                 }
             } catch (error) {
@@ -62,7 +61,6 @@ const AuthProvider = (props: { children: ReactNode }): ReactElement => {
     const clearUserData = async () => {
         try {
             await AsyncStorage.removeItem('accessToken');
-            await AsyncStorage.removeItem('userId');
             setUser(null);
         } catch (error) {
             console.error('Failed to clear user data:', error);
