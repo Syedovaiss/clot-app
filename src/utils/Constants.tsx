@@ -7,5 +7,5 @@ export const EMPTY_PHONE = "Phone number can't be empty"
 export const EMPTY_GENDER = "Please select gender!"
 
 
-export const ENDPOINT_LOGIN = "api/sign-in"
-export const ENDPOINT_SIGNUP = "api/sign-up"
+export const ENDPOINT_LOGIN = "http://192.168.162.135:4000/api/sign-in"
+export const ENDPOINT_SIGNUP = "http://192.168.162.135:4000/api/sign-up"

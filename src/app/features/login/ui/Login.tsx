@@ -15,35 +15,48 @@ import { useAuth } from "../../../../config/auth/AuthProvider";
 import { LoginScreenProps } from "./Login.props";
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
-    const [validate, errorMessage, result] = useLoginValidation();
+    const [validate, errorMessage, validationResult] = useLoginValidation();
     const [login, loginResult, loginErrorMessage] = useLoginResult();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const auth = useAuth()
+
+    useEffect(()=> {
+        switch (validationResult) {
+            case ValidationResult.Valid:
+                login(email, password)
+                break;
+            case ValidationResult.InValid:
+                console.log(errorMessage)
+                Toast.show(
+                    errorMessage,
+                    Toast.LONG
+                )
+                break;
+            default:
+                break;
+        }
+      
+    },[validationResult])
 
     useEffect(() => {
-        if (result === ValidationResult.Valid) {
-            login(email, password)
-            if (isNotEmpty(loginResult)) {
-                handleResult(loginResult)
-                Toast.show("Logged in successfully!", Toast.LONG)
-                navigation.navigate('Home')
-            }
-            if (isNotEmpty(loginErrorMessage)) {
-                Toast.show(loginErrorMessage ? loginErrorMessage : '', Toast.LONG)
-            }
-        }
-        if (result === ValidationResult.InValid) {
+        if(isNotEmpty(loginErrorMessage)) {
+            console.log(loginErrorMessage)
             Toast.show(
-                errorMessage,
+                loginErrorMessage ? loginErrorMessage : '',
                 Toast.LONG
             )
+        } else if(isNotEmpty(loginResult)) {
+            handleResult(loginResult)
+            Toast.show("Logged in successfully!", Toast.LONG)
+            navigation.navigate('Home')
         }
-    }, [result, errorMessage, loginResult, loginErrorMessage])
-    const handleLogin = async () => {
+    },[loginResult])
+    
+    const handleLogin = () => {
         validate(email, password)
     }
     const handleResult = (accessToken: string | null) => {
-        const auth = useAuth()
         auth.saveUserData(accessToken)
     }
     const onCreateNewAccount = () => {
