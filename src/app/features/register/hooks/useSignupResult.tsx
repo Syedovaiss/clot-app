@@ -1,60 +1,66 @@
-import { useState } from "react"
-import { ValidationResult } from "../../../../utils/ValidationResults.type"
+import { useState } from "react";
+import { ValidationResult } from "../../../../utils/ValidationResults.type";
 import { ClothAPI } from "../../../api/ClothApi";
 import { ENDPOINT_SIGNUP } from "../../../../utils/Constants";
 
+interface SignUpResponse {
+    message: string;
+    status: string;
+}
+
 export default (): [
     (firstName: string, lastName: string, email: string, password: string, phoneNumber: string, gender: string) => void,
-    error: string,
-    result: ValidationResult
+    string, // error message
+    ValidationResult // result status
 ] => {
+    const api = ClothAPI();
+    const [result, setResult] = useState<ValidationResult>(ValidationResult.None);
+    const [error, setError] = useState<string>('');
 
-    const [result, setResult] = useState<ValidationResult>(ValidationResult.None)
-    const [error, setError] = useState<string>('')
-
-    const signUp = async (firstName: string, lastName: string, email: string, password: string, phoneNumber: string, gender: string) => {
-
+    const signUp = async (
+        firstName: string,
+        lastName: string,
+        email: string,
+        password: string,
+        phoneNumber: string,
+        gender: string
+    ) => {
         try {
-            const payload = {
-                firstName,
-                lastName,
-                email,
-                password,
-                phoneNumber,
-                gender
-            }
-            const response = await ClothAPI().post(
-                ENDPOINT_SIGNUP,
-                payload
-            )
+            console.log("Hook Called!")
+            setError('');
+            const payload = { firstName, lastName, email, password, phoneNumber, gender };
+            const response = await api.post<SignUpResponse>(ENDPOINT_SIGNUP, payload);
             if (response && response.data) {
-                setResult(response.data.message);
-                console.log("Signup Successful, token:", response.data);
+                setResult(ValidationResult.Valid);
+                console.log("Signup Successful, token:", response.data.message);
             } else {
-                setError("Invalid Data")
-                console.log("Invalid Data!")
+                setResult(ValidationResult.InValid);
+                setError("Invalid Data");
+                console.log("Invalid Data!");
             }
-        } catch (error: any) {
-            if (error.response) {
-                const errorCode = error.response.status;
-                const errorData = error.response.data;
+        } catch (err: any) {
+            if (err.response) {
+                const errorCode = err.response.status;
+                const errorData = err.response.data;
+
                 console.log("Error Code:", errorCode);
-                console.log("Error Message:", errorData.message);
+                console.log("Error Message:", errorData.message || errorData.error || errorCode);
                 if (errorData && errorData.message) {
                     setError(errorData.message);
+                } else if (errorData && errorData.error) {
+                    setError(errorData.error);
                 } else {
-                    setError(`Error: ${errorCode}`);
-                    console.log(`Error: ${errorCode}`);
+                    setError(`Error Code: ${errorCode}`);
                 }
-            } else if (error.request) {
+            } else if (err.request) {
                 console.log("No response received from server");
                 setError("No response from server. Please try again later.");
             } else {
-                console.log("Error Message:", error.message);
-                setError(`Something went wrong: ${error.message}`);
+                console.log("Error Message:", err.message);
+                setError(`Something went wrong: ${err.message}`);
             }
+            setResult(ValidationResult.InValid);
         }
-
-    }
-    return [signUp, error, result]
-}
+    };
+    return [signUp, error, result];
+};

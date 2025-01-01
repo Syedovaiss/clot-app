@@ -16,41 +16,15 @@ import { isNotEmpty } from "../../../../utils/Helpers"
 
 export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) => {
 
-    const [validate, validationError, validationResult] = useSignupValidation()
-    const [signup, error, result] = useSignupResult()
     const [isLoading, setLoading] = useState(false)
-
-    const handleSignup = () => {
-        if (!isLoading)
-            validate(firstName, lastName, email, password, phoneNumber, gender)
-        setLoading(true)
-    }
-
-    useEffect(() => {
-        if (validationResult === ValidationResult.Valid) {
-            signup(firstName, lastName, email, password, phoneNumber, gender)
-            if (result == ValidationResult.Valid) {
-                Toast.show("Sign up successfully!", Toast.LONG)
-                setLoading(false)
-                navigation.navigate('LoginScreen')
-            }
-            if (isNotEmpty(error)) {
-                Toast.show(error, Toast.LONG)
-                setLoading(false)
-            }
-        }
-        if (validationResult === ValidationResult.InValid) {
-            Toast.show(validationError, Toast.LONG)
-            setLoading(false)
-        }
-    }, [validationError, validationResult, error, result])
-
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [gender, setGender] = useState<string>('');
+    const [validate, validationError, validationResult] = useSignupValidation()
+    const [signup, error, result] = useSignupResult()
 
     const genderItems = [
         {
@@ -62,10 +36,52 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
             value: 'Female'
         }
     ];
+
+    const handleSignup = () => {
+        console.log("Handle Sign Up Called!")
+        setLoading(true)
+        validate(firstName, lastName, email, password, phoneNumber, gender)
+    }
+    useEffect(()=> {
+        switch (validationResult) {
+            case ValidationResult.Valid:
+                signup(firstName, lastName, email, password, phoneNumber, gender)
+                break;
+            case ValidationResult.InValid:
+                console.log(validationError)
+                setLoading(false)
+                Toast.show(
+                    validationError,
+                    Toast.LONG
+                )
+                break;
+            default:
+                break;
+        }
+      
+    },[validationResult])
+
+    useEffect(() => {
+        if(isNotEmpty(error)) {
+            console.log(error)
+            setLoading(false)
+            Toast.show(
+                error ? error : '',
+                Toast.LONG
+            )
+        } else if(isNotEmpty(result) && result != ValidationResult.None) {
+            console.log(result)
+            setLoading(false)
+            Toast.show("Sign up successfully!", Toast.SHORT)
+            navigation.navigate('LoginScreen')
+        }
+    },[result])
+
+
     return (
         <ScrollView showsVerticalScrollIndicator={false} style={RegisterStyle.scrollingContainer}>
             <View style={RegisterStyle.container}>
-                {isLoading ? <ActivityIndicator /> : <View />}
+                {isLoading ? <ActivityIndicator style={RegisterStyle.indicatorStyle} /> : <View />}
                 <BackIcon width={40} height={40} style={RegisterStyle.backIconStyle} onPress={() => {
                     navigation.goBack();
                 }} />

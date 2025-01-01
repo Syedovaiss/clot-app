@@ -12,5 +12,10 @@ export const RegisterStyle = StyleSheet.create( {
     backIconStyle: {
         marginStart: 16,
         marginTop: 32
+    },
+    indicatorStyle: {
+        width: 50,
+        height: 50,
+        margin: 16
     }
 })

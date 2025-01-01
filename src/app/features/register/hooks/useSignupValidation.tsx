@@ -32,6 +32,11 @@ export default (): [
             setErrorMessage('')
             setResult(ValidationResult.Valid)
         }
+        // resetting hook so it can be called multiple times
+         setTimeout(() => {
+            setResult(ValidationResult.None), 0
+         });
     }
     return [validate, errorMessage, result]
+    
 }
