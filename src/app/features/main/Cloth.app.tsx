@@ -11,6 +11,7 @@ import { ProfileScreen } from '../profile/ProfileScreen';
 import { StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
 import { RegisterScreen } from '../register/ui/Register.ui';
+import { AboutScreen } from '../about/ui/About';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -20,7 +21,7 @@ export const Cloth = () => {
     return (
         <SafeAreaView style={style.container}>
             <NavigationContainer>
-                {user ? <Tab.Navigator screenOptions={{headerShown:false}}>
+                {user ? <Tab.Navigator screenOptions={{ headerShown: false }}>
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Notifications" component={NotificationsScreen} />
                     <Tab.Screen name="Orders" component={OrdersScreen} />
@@ -35,6 +36,10 @@ export const Cloth = () => {
                     <AuthStack.Screen
                         name='RegisterScreen'
                         component={RegisterScreen}
+                    />
+                    <AuthStack.Screen
+                        name='AboutScreen'
+                        component={AboutScreen}
                     />
                 </AuthStack.Navigator>}
             </NavigationContainer>

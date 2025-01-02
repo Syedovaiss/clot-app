@@ -11,7 +11,6 @@ import { ValidationResult } from "../../../../utils/ValidationResults.type";
 import Toast from 'react-native-simple-toast';
 import useLoginResult from "../hooks/useLoginResult";
 import { isNotEmpty } from "../../../../utils/Helpers";
-import { useAuth } from "../../../../config/auth/AuthProvider";
 import { LoginScreenProps } from "./Login.props";
 
 const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
@@ -19,9 +18,8 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
     const [login, loginResult, loginErrorMessage] = useLoginResult();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const auth = useAuth()
 
-    useEffect(()=> {
+    useEffect(() => {
         switch (validationResult) {
             case ValidationResult.Valid:
                 login(email, password)
@@ -36,29 +34,26 @@ const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             default:
                 break;
         }
-      
-    },[validationResult])
+
+    }, [validationResult])
 
     useEffect(() => {
-        if(isNotEmpty(loginErrorMessage)) {
+        if (isNotEmpty(loginErrorMessage)) {
             console.log(loginErrorMessage)
             Toast.show(
                 loginErrorMessage ? loginErrorMessage : '',
                 Toast.LONG
             )
-        } else if(isNotEmpty(loginResult)) {
-            handleResult(loginResult)
+        } else if (isNotEmpty(loginResult)) {
             Toast.show("Logged in successfully!", Toast.LONG)
-            navigation.navigate('Home')
+            navigation.navigate('AboutScreen', { paramData: loginResult })
         }
-    },[loginResult])
-    
+    }, [loginResult])
+
     const handleLogin = () => {
         validate(email, password)
     }
-    const handleResult = (accessToken: string | null) => {
-        auth.saveUserData(accessToken)
-    }
+
     const onCreateNewAccount = () => {
         navigation.navigate('RegisterScreen')
     }
