@@ -11,7 +11,7 @@ export const TextInputField = (props: TextInputProps) => {
         autoCorrect={props.autoCorrect ? props.autoCorrect : false}
         onChangeText={(text) => {
             setInputText(text)
-            props.onTextSubmit(inputText)
+            props.onTextSubmit(text)
         }}
         value={inputText}
         placeholder={props.placeholder}
@@ -19,5 +19,6 @@ export const TextInputField = (props: TextInputProps) => {
         secureTextEntry={props.secureTextEntry ? props.secureTextEntry : false}
         keyboardType={props.keyboardType ? props.keyboardType : 'default'}
         returnKeyType={props.returnKeyType ? props.returnKeyType : 'done'}
+        maxLength={props.maxLength ? props.maxLength : 1000}
     />
 }

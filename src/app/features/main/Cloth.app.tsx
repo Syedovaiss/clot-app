@@ -1,4 +1,4 @@
-import LoginScreen from '../login/Login';
+import LoginScreen from '../login/ui/Login';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -10,6 +10,8 @@ import { OrdersScreen } from '../orders/OrdersScreen';
 import { ProfileScreen } from '../profile/ProfileScreen';
 import { StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
+import { RegisterScreen } from '../register/ui/Register.ui';
+import { AboutScreen } from '../about/ui/About';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -19,7 +21,7 @@ export const Cloth = () => {
     return (
         <SafeAreaView style={style.container}>
             <NavigationContainer>
-                {user ? <Tab.Navigator>
+                {user ? <Tab.Navigator screenOptions={{ headerShown: false }}>
                     <Tab.Screen name="Home" component={HomeScreen} />
                     <Tab.Screen name="Notifications" component={NotificationsScreen} />
                     <Tab.Screen name="Orders" component={OrdersScreen} />
@@ -28,8 +30,16 @@ export const Cloth = () => {
                     headerShown: false
                 }}>
                     <AuthStack.Screen
-                        name='Login'
+                        name='LoginScreen'
                         component={LoginScreen}
+                    />
+                    <AuthStack.Screen
+                        name='RegisterScreen'
+                        component={RegisterScreen}
+                    />
+                    <AuthStack.Screen
+                        name='AboutScreen'
+                        component={AboutScreen}
                     />
                 </AuthStack.Navigator>}
             </NavigationContainer>

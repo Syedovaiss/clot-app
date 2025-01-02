@@ -1,5 +1,5 @@
 
-export type AutoCapitalize  = 'none' | 'words' | 'sentences' | 'characters'
+export type AutoCapitalize = 'none' | 'words' | 'sentences' | 'characters'
 export type KeyboardType = 'number-pad' | 'decimal-pad' | 'default' | 'numeric'
 export type ReturnKeyType = 'search' | 'done' | 'next'
 export type TextInputProps = {
@@ -10,5 +10,6 @@ export type TextInputProps = {
     autoCapitalize?: AutoCapitalize,
     keyboardType?: KeyboardType,
     returnKeyType?: ReturnKeyType,
+    maxLength?: number,
     onTextSubmit: (text: string) => void
 }
