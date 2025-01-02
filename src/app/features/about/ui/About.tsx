@@ -30,7 +30,7 @@ export const AboutScreen: React.ComponentType<AboutScreenProps> = ({ navigation,
         }
         if (result) {
             auth.saveUserData(token!)
-            navigation.navigate('Home')
+            navigation.navigate('Tabs')
         }
     }, [result])
 

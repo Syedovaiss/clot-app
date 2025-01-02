@@ -12,6 +12,10 @@ import { StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
 import { RegisterScreen } from '../register/ui/Register.ui';
 import { AboutScreen } from '../about/ui/About';
+import HomeTabIcon from '../../../../assets/images/HomeTabIcon';
+import NotificationTabIcon from '../../../../assets/images/NotificationTabIcon';
+import OrderTabIcon from '../../../../assets/images/OrderTabIcon';
+import ProfileTabIcon from '../../../../assets/images/ProfileTabIcon';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -21,27 +25,7 @@ export const Cloth = () => {
     return (
         <SafeAreaView style={style.container}>
             <NavigationContainer>
-                {user ? <Tab.Navigator screenOptions={{ headerShown: false }}>
-                    <Tab.Screen name="Home" component={HomeScreen} />
-                    <Tab.Screen name="Notifications" component={NotificationsScreen} />
-                    <Tab.Screen name="Orders" component={OrdersScreen} />
-                    <Tab.Screen name="Profile" component={ProfileScreen} />
-                </Tab.Navigator> : <AuthStack.Navigator screenOptions={{
-                    headerShown: false
-                }}>
-                    <AuthStack.Screen
-                        name='LoginScreen'
-                        component={LoginScreen}
-                    />
-                    <AuthStack.Screen
-                        name='RegisterScreen'
-                        component={RegisterScreen}
-                    />
-                    <AuthStack.Screen
-                        name='AboutScreen'
-                        component={AboutScreen}
-                    />
-                </AuthStack.Navigator>}
+                {user ? <AppNavigator /> : <AuthNavigator />}
             </NavigationContainer>
         </SafeAreaView>
     )
@@ -53,3 +37,64 @@ const style = StyleSheet.create({
         backgroundColor: colors.light.backgroundColor
     }
 })
+const AuthNavigator = () => (
+    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
+        <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+        <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <AuthStack.Screen name='AboutScreen' component={AboutScreen} />
+        <AuthStack.Screen name='Tabs' component={AppNavigator} />
+    </AuthStack.Navigator>
+);
+
+const AppNavigator = () => (
+    <Tab.Navigator
+        screenOptions={{
+            tabBarStyle: {
+                backgroundColor: colors.light.bottomTabBackgroundColor,
+                height: 60,
+                borderTopWidth: 1
+            },
+            headerShown: false,
+            tabBarInactiveTintColor: colors.light.tabBarInActiveColor,
+            tabBarActiveTintColor: colors.light.tabBarActiveColor,
+            tabBarLabelStyle: {
+                display: 'none'
+            }
+        }}
+    >
+        <Tab.Screen
+            name="HomeScreen"
+            component={HomeScreen}
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <HomeTabIcon width={24} height={24} color={color} />
+                ),
+            }} />
+        <Tab.Screen
+            name="Notifications"
+            component={NotificationsScreen}
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <NotificationTabIcon width={24} height={24} color={color} />
+                ),
+            }} />
+        <Tab.Screen
+            name="Orders"
+            component={OrdersScreen}
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <OrderTabIcon width={24} height={24} color={color} />
+                ),
+            }}
+        />
+        <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+                tabBarIcon: ({ color }) => (
+                    <ProfileTabIcon width={24} height={24} color={color} />
+                ),
+            }}
+        />
+    </Tab.Navigator>
+);
