@@ -11,7 +11,7 @@ import Toast from 'react-native-simple-toast';
 import updateUserInfo from "../hooks/updateUserInfo"
 import { useAuth } from "../../../../config/auth/AuthProvider"
 
-export const AboutScreen: React.FC<AboutScreenProps> = ({ navigation, route }) => {
+export const AboutScreen: React.ComponentType<AboutScreenProps> = ({ navigation, route }) => {
     const interestedIn: string[] = ['Men', 'Women'];
     const [selectedChip, setSelectedChip] = useState<string | null>(null);
     const token = route.params?.paramData
