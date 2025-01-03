@@ -16,6 +16,7 @@ import HomeTabIcon from '../../../../assets/images/HomeTabIcon';
 import NotificationTabIcon from '../../../../assets/images/NotificationTabIcon';
 import OrderTabIcon from '../../../../assets/images/OrderTabIcon';
 import ProfileTabIcon from '../../../../assets/images/ProfileTabIcon';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 const Tab = createBottomTabNavigator();
 const AuthStack = createStackNavigator();
@@ -23,11 +24,14 @@ const AuthStack = createStackNavigator();
 export const Cloth = () => {
     const { user } = useAuth()
     return (
-        <SafeAreaView style={style.container}>
-            <NavigationContainer>
-                {user ? <AppNavigator /> : <AuthNavigator />}
-            </NavigationContainer>
-        </SafeAreaView>
+        <GestureHandlerRootView style={style.container}>
+            <SafeAreaView style={style.container}>
+                <NavigationContainer>
+                    {user ? <AppNavigator /> : <AuthNavigator />}
+                </NavigationContainer>
+            </SafeAreaView>
+        </GestureHandlerRootView>
+
     )
 }
 
