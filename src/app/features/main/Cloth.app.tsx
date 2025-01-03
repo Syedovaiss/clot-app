@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useAuth } from '../../../config/auth/AuthProvider';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { HomeScreen } from '../home/HomeScreen';
+import { HomeScreen } from '../home/ui/HomeScreen';
 import { NotificationsScreen } from '../notifications/NotificationScreen';
 import { OrdersScreen } from '../orders/OrdersScreen';
 import { ProfileScreen } from '../profile/ProfileScreen';

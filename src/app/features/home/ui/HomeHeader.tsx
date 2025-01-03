@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import DownArrow from '../../../../assets/images/DownArrow';
+import DownArrow from '../../../../../assets/images/DownArrow';
 import FastImage from 'react-native-fast-image';
-import { PROFILE_THUMBNAIL } from '../../../utils/Constants';
-import colors from '../../../config/colors/Colors';
-import CartIcon from '../../../../assets/images/CartIcon';
+import { PROFILE_THUMBNAIL } from '../../../../utils/Constants';
+import colors from '../../../../config/colors/Colors';
+import CartIcon from '../../../../../assets/images/CartIcon';
 
 const HomeHeader = () => {
     const [selectedValue, setSelectedValue] = useState('Men'); 

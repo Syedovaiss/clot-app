@@ -6,10 +6,18 @@ export const EMPTY_LAST_NAME = "Last name can't be empty!"
 export const EMPTY_PHONE = "Phone number can't be empty"
 export const EMPTY_GENDER = "Please select gender!"
 
-
-export const ENDPOINT_LOGIN = "http://192.168.204.135:4000/api/sign-in"
-export const ENDPOINT_SIGNUP = "http://192.168.204.135:4000/api/sign-up"
-export const ENDPOINT_ABOUT_YOURSELF = "http://192.168.204.135:4000/api/add-user-info"
+const BASE_URL = "http://192.168.100.153:4000"
+export const ENDPOINT_LOGIN = `${BASE_URL}/api/sign-in`
+export const ENDPOINT_SIGNUP = `${BASE_URL}/api/sign-up`
+export const ENDPOINT_ABOUT_YOURSELF = `${BASE_URL}/api/add-user-info`
+export const ENDPOINT_SEARCH_API = `${BASE_URL}/api/search`
+export const ENDPOINT_TOP_SELLING = `${BASE_URL}/api/products/top-selling`
+export const ENDPOINT_LAST_ADDED = `${BASE_URL}/api/last-ten-products`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
+const IMAGE_PREFIX = `${BASE_URL}/uploads/`
+
+export const getImageUrl = (imageUrl: string) => {
+    return `${IMAGE_PREFIX}${imageUrl}`
+}
