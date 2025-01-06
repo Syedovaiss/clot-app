@@ -5,7 +5,7 @@ import { getImageUrl } from '../../../../utils/Constants';
 import colors from '../../../../config/colors/Colors';
 
 type Category = {
-  id: string;
+  _id: string;
   title: string;
   image: string; 
 };
@@ -20,7 +20,7 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, onCategoryCl
     <View style={styles.container}>
       <FlatList
         data={categories.data}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (

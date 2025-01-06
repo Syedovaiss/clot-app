@@ -10,6 +10,8 @@ import useCateogries from "../hooks/useCategories";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
 import { Categories } from "./Categories";
 import FastImage from "react-native-fast-image";
+import { NewArrivals } from "./NewArrival";
+import { TopSellingView } from "./TopSelling";
 
 export const HomeScreen = () => {
     const [getCategories, categories, categoriesError] = useCateogries();
@@ -37,21 +39,21 @@ export const HomeScreen = () => {
                     }}
                 />
                 <View style={homeStyle.titleStyle} >
-                    <Text>Categories</Text>
-                    <Text>See All</Text>
+                    <Text style = {homeStyle.titleTextStyle}>Categories</Text>
+                    <Text style = {homeStyle.seeAllText}>See All</Text>
                 </View>                
                 {categories ? <Categories categories={categories} onCategoryClicked={(item) => console.log(item)} /> : <Text>No Categories Available</Text>}
                 <View style={homeStyle.titleStyle} >
-                    <Text>New In</Text>
-                    <Text>See All</Text>
+                    <Text style = {homeStyle.titleTextStyle}>New In</Text>
+                    <Text style = {homeStyle.seeAllText}>See All</Text>
                 </View>
 
-                {newArrivals ? <Text>New Arrivals Exists</Text> : <Text>No New Arrivals</Text>}
+                {newArrivals ? <NewArrivals products={newArrivals} onNewArrivalClicked={(item) => console.log(item)} />  : <Text>No New Arrivals</Text>}
                 <View style={homeStyle.titleStyle} >
-                    <Text>Top Selling</Text>
-                    <Text>See All</Text>
+                    <Text style = {homeStyle.titleTextStyle}>Top Selling</Text>
+                    <Text style = {homeStyle.seeAllText}>See All</Text>
                 </View>
-                {topSellingProducts ? <Text>New Arrivals Exists</Text> : <Text>No New Arrivals</Text>}
+                {topSellingProducts ? <TopSellingView products={topSellingProducts} onTopSellingClicked={(item) => console.log(item)} /> : <Text>No New Arrivals</Text>}
             </ScrollView>
         </View>
     )
@@ -68,6 +70,11 @@ const homeStyle = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 16,
         marginVertical: 16,
+    },
+    titleTextStyle: {
+        fontSize:20,
+        fontWeight:'bold'
+
     },
     seeAllText: {
         fontSize: 16,
