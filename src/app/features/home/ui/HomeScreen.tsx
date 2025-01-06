@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { ClothSearchBar } from "../../../../components/search/Search";
 import colors from "../../../../config/colors/Colors";
 import HomeHeader from "./HomeHeader";
@@ -7,19 +7,23 @@ import useNewArrival from "../hooks/useNewArrival";
 import useTopSellingProducts from "../hooks/useTopSellingProducts";
 import useSearch from "../hooks/useSearch";
 import useCateogries from "../hooks/useCategories";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { ScrollView } from "react-native-gesture-handler";
 import { Categories } from "./Categories";
-import FastImage from "react-native-fast-image";
 import { NewArrivals } from "./NewArrival";
 import { TopSellingView } from "./TopSelling";
+import useAvatar from "../hooks/useAvatar";
+import { useAuth } from "../../../../config/auth/AuthProvider";
 
 export const HomeScreen = () => {
+    const [getUserAvatar, avatar, avatarError] = useAvatar();
     const [getCategories, categories, categoriesError] = useCateogries();
     const [getNewArrival, newArrivals, newArrivalError] = useNewArrival();
     const [getTopSellingProducts, topSellingProducts, topSellingProductsError] = useTopSellingProducts();
     const [search, searchResult, searchError] = useSearch()
+    const auth = useAuth()
 
     useEffect(() => {
+        getUserAvatar(auth.user)
         getCategories()
         getNewArrival()
         getTopSellingProducts()
@@ -28,7 +32,7 @@ export const HomeScreen = () => {
     return (
         <View style={homeStyle.container}>
             <ScrollView>
-                <HomeHeader />
+                <HomeHeader avatar={avatar} />
                 <ClothSearchBar
                     placeholder="Search"
                     onQuerySubmit={(text) => {
@@ -39,19 +43,19 @@ export const HomeScreen = () => {
                     }}
                 />
                 <View style={homeStyle.titleStyle} >
-                    <Text style = {homeStyle.titleTextStyle}>Categories</Text>
-                    <Text style = {homeStyle.seeAllText}>See All</Text>
-                </View>                
+                    <Text style={homeStyle.titleTextStyle}>Categories</Text>
+                    <Text style={homeStyle.seeAllText}>See All</Text>
+                </View>
                 {categories ? <Categories categories={categories} onCategoryClicked={(item) => console.log(item)} /> : <Text>No Categories Available</Text>}
                 <View style={homeStyle.titleStyle} >
-                    <Text style = {homeStyle.titleTextStyle}>New In</Text>
-                    <Text style = {homeStyle.seeAllText}>See All</Text>
+                    <Text style={homeStyle.titleTextStyle}>New In</Text>
+                    <Text style={homeStyle.seeAllText}>See All</Text>
                 </View>
 
-                {newArrivals ? <NewArrivals products={newArrivals} onNewArrivalClicked={(item) => console.log(item)} />  : <Text>No New Arrivals</Text>}
+                {newArrivals ? <NewArrivals products={newArrivals} onNewArrivalClicked={(item) => console.log(item)} /> : <Text>No New Arrivals</Text>}
                 <View style={homeStyle.titleStyle} >
-                    <Text style = {homeStyle.titleTextStyle}>Top Selling</Text>
-                    <Text style = {homeStyle.seeAllText}>See All</Text>
+                    <Text style={homeStyle.titleTextStyle}>Top Selling</Text>
+                    <Text style={homeStyle.seeAllText}>See All</Text>
                 </View>
                 {topSellingProducts ? <TopSellingView products={topSellingProducts} onTopSellingClicked={(item) => console.log(item)} /> : <Text>No New Arrivals</Text>}
             </ScrollView>
@@ -72,8 +76,8 @@ const homeStyle = StyleSheet.create({
         marginVertical: 16,
     },
     titleTextStyle: {
-        fontSize:20,
-        fontWeight:'bold'
+        fontSize: 20,
+        fontWeight: 'bold'
 
     },
     seeAllText: {

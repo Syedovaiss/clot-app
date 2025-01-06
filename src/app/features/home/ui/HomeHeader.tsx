@@ -3,13 +3,16 @@ import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import DownArrow from '../../../../../assets/images/DownArrow';
 import FastImage from 'react-native-fast-image';
-import { PROFILE_THUMBNAIL } from '../../../../utils/Constants';
+import { getImageUrl, PROFILE_THUMBNAIL } from '../../../../utils/Constants';
 import colors from '../../../../config/colors/Colors';
 import CartIcon from '../../../../../assets/images/CartIcon';
 
-const HomeHeader = () => {
-    const [selectedValue, setSelectedValue] = useState('Men'); 
+type HomeHeaderProps = {
+    avatar: string | null | undefined
+}
 
+const HomeHeader: React.FC<HomeHeaderProps> = ({ avatar }) => {
+    const [selectedValue, setSelectedValue] = useState('Men');
     return (
         <View style={styles.rowContainer}>
             {/* Profile Image */}
@@ -17,7 +20,7 @@ const HomeHeader = () => {
                 <FastImage
                     style={styles.profileImage}
                     source={{
-                        uri: PROFILE_THUMBNAIL,
+                        uri: avatar ? getImageUrl(avatar) : PROFILE_THUMBNAIL,
                         priority: FastImage.priority.high,
                     }}
                     resizeMode={FastImage.resizeMode.cover}
@@ -26,16 +29,16 @@ const HomeHeader = () => {
 
             {/* Dropdown */}
             <RNPickerSelect
-                onValueChange={(value) => setSelectedValue(value)} 
-                value={selectedValue} 
+                onValueChange={(value) => setSelectedValue(value)}
+                value={selectedValue}
                 items={[
                     { label: 'Men', value: 'Men' },
                     { label: 'Women', value: 'Women' },
                 ]}
                 style={pickerSelectStyles}
-                useNativeAndroidPickerStyle={false} 
+                useNativeAndroidPickerStyle={false}
                 Icon={() => (
-                    <DownArrow width={24} height={24} style={styles.dropDownIconStyle} /> 
+                    <DownArrow width={24} height={24} style={styles.dropDownIconStyle} />
                 )}
             />
 
@@ -51,42 +54,42 @@ const HomeHeader = () => {
 const styles = StyleSheet.create({
     rowContainer: {
         flexDirection: 'row',
-        alignItems: 'center', 
-        justifyContent: 'space-between', 
+        alignItems: 'center',
+        justifyContent: 'space-between',
         padding: 16,
     },
     profileContainer: {
-        width: 50, 
+        width: 50,
         height: 50,
-        borderRadius: 25, 
-        overflow: 'hidden', 
+        borderRadius: 25,
+        overflow: 'hidden',
         borderWidth: 2,
-        borderColor: '#ddd', 
+        borderColor: '#ddd',
     },
     profileImage: {
         width: '100%',
         height: '100%',
-        resizeMode: 'cover', 
+        resizeMode: 'cover',
     },
     cartContainer: {
         width: 50,
         height: 50,
-        backgroundColor: colors.light.buttonColor, 
-        borderRadius: 25, 
-        justifyContent: 'center', 
+        backgroundColor: colors.light.buttonColor,
+        borderRadius: 25,
+        justifyContent: 'center',
         alignItems: 'center'
     },
     cartIconStyle: {
         transform: [
-            { translateX: 4 },  
-            { translateY: 4 },  
-          ]
+            { translateX: 4 },
+            { translateY: 4 },
+        ]
     },
     dropDownIconStyle: {
         transform: [
-            { translateX: -15 },  
-            { translateY: 10 }, 
-          ]
+            { translateX: -15 },
+            { translateY: 10 },
+        ]
     }
 });
 
@@ -98,12 +101,12 @@ const pickerSelectStyles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 1,
         borderColor: colors.light.fieldBackground,
-        width: 150, 
+        width: 150,
         height: 50,
         marginBottom: 5,
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems: 'center',
-        textAlign:'center'
+        textAlign: 'center'
     },
     inputAndroid: {
         fontSize: 16,
@@ -112,12 +115,12 @@ const pickerSelectStyles = StyleSheet.create({
         borderRadius: 30,
         borderWidth: 1,
         borderColor: colors.light.fieldBackground,
-        width: 150, 
+        width: 150,
         height: 50,
         marginBottom: 5,
-        justifyContent: 'center', 
+        justifyContent: 'center',
         alignItems: 'center',
-        textAlign:'center'
+        textAlign: 'center'
     }
 });
 

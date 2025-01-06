@@ -3,20 +3,17 @@ import { ClothAPI } from "../../../api/ClothApi"
 import { ENDPOINT_PROFILE } from "../../../../utils/Constants"
 
 export default (): [
-    () => void,
+    (token: string|null) => void,
     string | undefined | null,
     string | undefined
 ] => {
-    const api = ClothAPI()
     const [avatar, setAvatar] = useState<string | undefined | null>(undefined)
     const [error, setError] = useState<string | undefined>(undefined)
-    const getUserAvatar = async () => {
+    const getUserAvatar = async (token: string|null) => {
+        const api = ClothAPI(token!)
         try {
             setError(undefined);
-            const response = await api.get(ENDPOINT_PROFILE);
-
-            console.log("Categories Response:", response.data);
-
+            const response = await api.get(ENDPOINT_PROFILE)
             if (response && response.data) {
                 setAvatar(response.data.avatar);
             } else {

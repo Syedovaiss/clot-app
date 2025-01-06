@@ -38,7 +38,7 @@ export const Cloth = () => {
 const style = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 15,
+        marginTop: 20,
         backgroundColor: colors.light.backgroundColor
     }
 })

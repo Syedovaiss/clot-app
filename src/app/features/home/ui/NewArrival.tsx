@@ -26,7 +26,7 @@ export const NewArrivals: React.FC<NewArrivalsProps> = ({ products, onNewArrival
     <View style={styles.container}>
       <FlatList
         data={products}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         horizontal
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
