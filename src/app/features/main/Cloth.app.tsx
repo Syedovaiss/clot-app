@@ -8,7 +8,7 @@ import { HomeScreen } from '../home/ui/HomeScreen';
 import { NotificationsScreen } from '../notifications/NotificationScreen';
 import { OrdersScreen } from '../orders/OrdersScreen';
 import { ProfileScreen } from '../profile/ProfileScreen';
-import { StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
 import { RegisterScreen } from '../register/ui/Register.ui';
 import { AboutScreen } from '../about/ui/About';
@@ -38,6 +38,7 @@ export const Cloth = () => {
 const style = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: 10,
         backgroundColor: colors.light.backgroundColor
     }
 })

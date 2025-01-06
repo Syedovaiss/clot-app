@@ -15,7 +15,7 @@ export default (): [
             setError(null)
             await api.get(ENDPOINT_TOP_SELLING)
                 .then(response => {
-                    if (response && response.data && response.data.accessToken) {
+                    if (response && response.data) {
                         setTopSellingProducts(response.data)
                     } else {
                         setError("Failed to get top selling products!")

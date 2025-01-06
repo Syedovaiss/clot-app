@@ -13,11 +13,11 @@ export const ENDPOINT_ABOUT_YOURSELF = `${BASE_URL}/api/add-user-info`
 export const ENDPOINT_SEARCH_API = `${BASE_URL}/api/search`
 export const ENDPOINT_TOP_SELLING = `${BASE_URL}/api/products/top-selling`
 export const ENDPOINT_LAST_ADDED = `${BASE_URL}/api/last-ten-products`
+export const ENDPOINT_CATEGORIES = `${BASE_URL}/api/categories`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
-const IMAGE_PREFIX = `${BASE_URL}/uploads/`
-
 export const getImageUrl = (imageUrl: string) => {
-    return `${IMAGE_PREFIX}${imageUrl}`
+    let imageURl = BASE_URL + "/"+ imageUrl
+    return imageURl
 }
