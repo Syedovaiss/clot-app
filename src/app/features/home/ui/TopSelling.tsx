@@ -25,7 +25,7 @@ export const TopSellingView: React.FC<TopSellingProps> = ({ products, onTopSelli
   return (
     <View style={styles.container}>
       <FlatList
-        data={products.data}
+        data={products}
         keyExtractor={(item) => item.id}
         horizontal
         showsHorizontalScrollIndicator={false}

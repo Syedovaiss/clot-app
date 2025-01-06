@@ -16,7 +16,7 @@ export default (): [
             await api.get(ENDPOINT_LAST_ADDED)
                 .then(response => {
                     if (response && response.data) {
-                        setNewArrivals(response.data)
+                        setNewArrivals(response.data.data)
                     } else {
                         setError("Failed to get top selling products!")
                     }

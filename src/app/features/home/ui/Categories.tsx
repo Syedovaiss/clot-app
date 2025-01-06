@@ -19,7 +19,7 @@ export const Categories: React.FC<CategoriesProps> = ({ categories, onCategoryCl
   return (  
     <View style={styles.container}>
       <FlatList
-        data={categories.data}
+        data={categories}
         keyExtractor={(item) => item._id}
         horizontal
         showsHorizontalScrollIndicator={false}

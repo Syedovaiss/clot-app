@@ -1,25 +1,24 @@
 import { useState } from "react"
 import { ClothAPI } from "../../../api/ClothApi"
-import { ENDPOINT_CATEGORIES } from "../../../../utils/Constants"
+import { ENDPOINT_PROFILE } from "../../../../utils/Constants"
 
 export default (): [
     () => void,
-    any[] | null,
+    string | undefined | null,
     string | undefined
 ] => {
     const api = ClothAPI()
-    const [categories, setCategories] = useState<any[]>([])
+    const [avatar, setAvatar] = useState<string | undefined | null>(undefined)
     const [error, setError] = useState<string | undefined>(undefined)
-    const getCategories = async () => {
+    const getUserAvatar = async () => {
         try {
-            setError(undefined); // Clear any previous error
-            const response = await api.get(ENDPOINT_CATEGORIES);
-            
-            // Log response to check if the data is coming through as expected
+            setError(undefined);
+            const response = await api.get(ENDPOINT_PROFILE);
+
             console.log("Categories Response:", response.data);
-    
+
             if (response && response.data) {
-                setCategories(response.data.data);
+                setAvatar(response.data.avatar);
             } else {
                 setError("Failed to get categories.");
             }
@@ -39,7 +38,7 @@ export default (): [
             }
         }
     };
-    
-    return [getCategories, categories, error]
+
+    return [getUserAvatar, avatar, error]
 
 }
