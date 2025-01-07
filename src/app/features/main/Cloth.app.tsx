@@ -18,6 +18,8 @@ import OrderTabIcon from '../../../../assets/images/OrderTabIcon';
 import ProfileTabIcon from '../../../../assets/images/ProfileTabIcon';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CartScreen } from '../cart/CartScreen';
+import AddressesScreen from '../address/Address';
+import { AddNewAddress } from '../address/AddNewAddress';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -61,6 +63,8 @@ const OrdersStackNavigator = () => (
 const ProfileStackNavigator = () => (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+        <Stack.Screen name="AddressesScreen" component={AddressesScreen} />
+        <Stack.Screen name="AddNewAddressScreen" component={AddNewAddress} />
     </Stack.Navigator>
 );
 const AuthNavigator = () => (

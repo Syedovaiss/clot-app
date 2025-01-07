@@ -15,6 +15,8 @@ export const ENDPOINT_TOP_SELLING = `${BASE_URL}/api/products/top-selling`
 export const ENDPOINT_LAST_ADDED = `${BASE_URL}/api/last-ten-products`
 export const ENDPOINT_CATEGORIES = `${BASE_URL}/api/categories`
 export const ENDPOINT_PROFILE = `${BASE_URL}/api/profile`
+export const ENDPOINT_ALL_ADDRESSES = `${BASE_URL}/api/address`
+export const ENDPOINT_ADD_ADDRESSES = `${BASE_URL}/api/add-address`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
