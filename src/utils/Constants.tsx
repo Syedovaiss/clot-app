@@ -18,7 +18,10 @@ export const ENDPOINT_PROFILE = `${BASE_URL}/api/profile`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
-export const getImageUrl = (imageUrl: string) => {
+export const getImageUrl = (imageUrl?: string | null) => {
+    if(imageUrl === null) {
+        return PROFILE_THUMBNAIL
+    }
     let imageURl = BASE_URL + "/"+ imageUrl
     return imageURl
 }

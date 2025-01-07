@@ -8,12 +8,13 @@ const colors = {
     textColor: '#000000',
     splashBackground: '#8E6CEF',
     fieldBackground: '#F4F4F4',
-    placeholderColor: '#272727',
+    placeholderColor: '#27272780',
     buttonTextColor: '#FFFFFF',
     tabBarInActiveColor: '#27272780',
     tabBarActiveColor: '#8E6CEF',
     white: '#FFFFFF',
-    bottomTabBackgroundColor: '#FFFFFF'
+    bottomTabBackgroundColor: '#FFFFFF',
+    red: "#FA3636"
   },
   dark: {
     backgroundColor: '#000000',
@@ -26,7 +27,8 @@ const colors = {
     tabBarInActiveColor: '#27272780',
     tabBarActiveColor: '#8E6CEF',
     white: '#FFFFFF',
-    bottomTabBackgroundColor: '#FFFFFF'
+    bottomTabBackgroundColor: '#FFFFFF',
+    red: "#FA3636"
   },
 };
 export const useColors = () => {
