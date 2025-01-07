@@ -25,3 +25,8 @@ export const getImageUrl = (imageUrl?: string | null) => {
     let imageURl = BASE_URL + "/"+ imageUrl
     return imageURl
 }
+
+export const SUPPORT_URL: string = "https://www.venturedive.com/contact/"
+const phoneNumber = "+923362402603"
+const helpMessage = "Hey! I need help."
+export const HELP_URL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(helpMessage)}`;
