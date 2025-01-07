@@ -22,6 +22,7 @@ import { AddNewAddress } from '../address/ui/AddNewAddress';
 import AddressesScreen from '../address/ui/Address';
 import { AddNewPaymentMethodsScreen } from '../payment/ui/AddNewPaymentMethod';
 import { PaymentMethodsScreen } from '../payment/ui/Payment';
+import { WishlistScreen } from '../wishlist/ui/Wishlist';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -69,6 +70,8 @@ const ProfileStackNavigator = () => (
         <Stack.Screen name="AddNewAddressScreen" component={AddNewAddress} />
         <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
         <Stack.Screen name="AddNewPaymentMethodsScreen" component={AddNewPaymentMethodsScreen} />
+        <Stack.Screen name="WishlistScreen" component={WishlistScreen} />
+        <Stack.Screen name='Auth' component={AuthNavigator}/>
     </Stack.Navigator>
 );
 const AuthNavigator = () => (

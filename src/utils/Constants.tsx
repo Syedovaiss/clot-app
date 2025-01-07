@@ -19,6 +19,8 @@ export const ENDPOINT_ALL_ADDRESSES = `${BASE_URL}/api/address`
 export const ENDPOINT_ADD_ADDRESSES = `${BASE_URL}/api/add-address`
 export const ENDPOINT_ALL_PAYMENT_METHODS = `${BASE_URL}/api/payment-methods`
 export const ENDPOINT_ADD_PAYMENT_METHODS = `${BASE_URL}/api/add-payment-method`
+export const ENDPOINT_WISHLIST = `${BASE_URL}/api/wishlist`
+export const ENDPOINT_REMOVE_FROM_WISHLIST = `${BASE_URL}/api/remove-from-wishlist`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';

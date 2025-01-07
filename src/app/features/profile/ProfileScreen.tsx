@@ -34,8 +34,8 @@ export const ProfileScreen = ({ navigation }: { navigation: any }) => {
                     text: 'Yes',
                     onPress: () => {
                         console.log("Logging out!")
-                        // auth.clearUserData()
-                        // navigation.navigate('LoginScreen')
+                        auth.clearUserData()
+                        navigation.navigate('Auth')
                     },
                 },
             ],
@@ -75,7 +75,7 @@ export const ProfileScreen = ({ navigation }: { navigation: any }) => {
                     <Text style={styles.tileText}>Payment</Text>
                     <RightArrow width={24} height={24} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.tile} onPress={() => { }}>
+                <TouchableOpacity style={styles.tile} onPress={() => { navigation.navigate('WishlistScreen')  }}>
                     <Text style={styles.tileText}>Wishlist</Text>
                     <RightArrow width={24} height={24} />
                 </TouchableOpacity>
