@@ -48,18 +48,15 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
                 />
                 <View style={homeStyle.titleStyle} >
                     <Text style={homeStyle.titleTextStyle}>Categories</Text>
-                    <Text style={homeStyle.seeAllText}>See All</Text>
                 </View>
                 {categories ? <Categories categories={categories} onCategoryClicked={(item) => console.log(item)} /> : <Text>No Categories Available</Text>}
                 <View style={homeStyle.titleStyle} >
                     <Text style={homeStyle.titleTextStyle}>New In</Text>
-                    <Text style={homeStyle.seeAllText}>See All</Text>
                 </View>
 
                 {newArrivals ? <NewArrivals products={newArrivals} onNewArrivalClicked={(item) => console.log(item)} /> : <Text>No New Arrivals</Text>}
                 <View style={homeStyle.titleStyle} >
                     <Text style={homeStyle.titleTextStyle}>Top Selling</Text>
-                    <Text style={homeStyle.seeAllText}>See All</Text>
                 </View>
                 {topSellingProducts ? <TopSellingView products={topSellingProducts} onTopSellingClicked={(item) => console.log(item)} /> : <Text>No New Arrivals</Text>}
             </ScrollView>
