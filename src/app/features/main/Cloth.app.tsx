@@ -17,9 +17,10 @@ import NotificationTabIcon from '../../../../assets/images/NotificationTabIcon';
 import OrderTabIcon from '../../../../assets/images/OrderTabIcon';
 import ProfileTabIcon from '../../../../assets/images/ProfileTabIcon';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { CartScreen } from '../cart/CartScreen';
 
 const Tab = createBottomTabNavigator();
-const AuthStack = createStackNavigator();
+const Stack = createStackNavigator();
 
 export const Cloth = () => {
     const { user } = useAuth()
@@ -42,13 +43,33 @@ const style = StyleSheet.create({
         backgroundColor: colors.light.backgroundColor
     }
 })
+const HomeStackNavigator = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }} >
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="CartScreen" component={CartScreen}  />
+        <Stack.Screen name="Profile" component={ProfileStackNavigator} />
+    </Stack.Navigator>
+);
+
+
+const OrdersStackNavigator = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="OrdersScreen" component={OrdersScreen} />
+    </Stack.Navigator>
+);
+
+const ProfileStackNavigator = () => (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+    </Stack.Navigator>
+);
 const AuthNavigator = () => (
-    <AuthStack.Navigator screenOptions={{ headerShown: false }}>
-        <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
-        <AuthStack.Screen name="RegisterScreen" component={RegisterScreen} />
-        <AuthStack.Screen name='AboutScreen' component={AboutScreen} />
-        <AuthStack.Screen name='Tabs' component={AppNavigator} />
-    </AuthStack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        <Stack.Screen name='AboutScreen' component={AboutScreen} />
+        <Stack.Screen name='Tabs' component={AppNavigator} />
+    </Stack.Navigator>
 );
 
 const AppNavigator = () => (
@@ -68,8 +89,8 @@ const AppNavigator = () => (
         }}
     >
         <Tab.Screen
-            name="HomeScreen"
-            component={HomeScreen}
+            name="HomeStack"
+            component={HomeStackNavigator}
             options={{
                 tabBarIcon: ({ color }) => (
                     <HomeTabIcon width={24} height={24} color={color} />
@@ -85,7 +106,7 @@ const AppNavigator = () => (
             }} />
         <Tab.Screen
             name="Orders"
-            component={OrdersScreen}
+            component={OrdersStackNavigator}
             options={{
                 tabBarIcon: ({ color }) => (
                     <OrderTabIcon width={24} height={24} color={color} />
@@ -94,7 +115,7 @@ const AppNavigator = () => (
         />
         <Tab.Screen
             name="Profile"
-            component={ProfileScreen}
+            component={ProfileStackNavigator}
             options={{
                 tabBarIcon: ({ color }) => (
                     <ProfileTabIcon width={24} height={24} color={color} />

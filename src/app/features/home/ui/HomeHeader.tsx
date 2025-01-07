@@ -8,14 +8,17 @@ import colors from '../../../../config/colors/Colors';
 import CartIcon from '../../../../../assets/images/CartIcon';
 
 type HomeHeaderProps = {
-    avatar: string | null | undefined
+    avatar: string | null | undefined,
+    onCartClicked: () => void,
+    onProfileClicked:() => void
 }
 
-const HomeHeader: React.FC<HomeHeaderProps> = ({ avatar }) => {
+const HomeHeader: React.FC<HomeHeaderProps> = ({ avatar, onCartClicked, onProfileClicked }) => {
     const [selectedValue, setSelectedValue] = useState('Men');
     return (
         <View style={styles.rowContainer}>
             {/* Profile Image */}
+            <TouchableOpacity style={styles.profileContainer} onPress={() => onProfileClicked()}>
             <View style={styles.profileContainer}>
                 <FastImage
                     style={styles.profileImage}
@@ -26,6 +29,8 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ avatar }) => {
                     resizeMode={FastImage.resizeMode.cover}
                 />
             </View>
+            </TouchableOpacity>
+        
 
             {/* Dropdown */}
             <RNPickerSelect
@@ -43,7 +48,9 @@ const HomeHeader: React.FC<HomeHeaderProps> = ({ avatar }) => {
             />
 
             {/* Cart Icon */}
-            <TouchableOpacity style={styles.cartContainer}>
+            <TouchableOpacity style={styles.cartContainer} onPress={() => {
+                onCartClicked()
+            }}>
                 <CartIcon width={32} height={32} style={styles.cartIconStyle} />
             </TouchableOpacity>
         </View>

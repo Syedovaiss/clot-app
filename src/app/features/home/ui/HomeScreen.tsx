@@ -14,7 +14,7 @@ import { TopSellingView } from "./TopSelling";
 import useAvatar from "../hooks/useAvatar";
 import { useAuth } from "../../../../config/auth/AuthProvider";
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }: { navigation: any }) => {
     const [getUserAvatar, avatar, avatarError] = useAvatar();
     const [getCategories, categories, categoriesError] = useCateogries();
     const [getNewArrival, newArrivals, newArrivalError] = useNewArrival();
@@ -32,7 +32,11 @@ export const HomeScreen = () => {
     return (
         <View style={homeStyle.container}>
             <ScrollView>
-                <HomeHeader avatar={avatar} />
+                <HomeHeader avatar={avatar} onCartClicked={() => {
+                    navigation.navigate('CartScreen')
+                }} onProfileClicked={() => {
+                    navigation.navigate('Profile')
+                }} />
                 <ClothSearchBar
                     placeholder="Search"
                     onQuerySubmit={(text) => {
