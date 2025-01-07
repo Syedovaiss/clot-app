@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import { BackIcon } from '../../../../assets/images/BackIcon';
-import colors from '../../../config/colors/Colors';
-import { useAuth } from '../../../config/auth/AuthProvider';
-import useAddresses, { Address } from './hooks/useAddresses';
-import { PrimaryButton } from '../../../components/button/PrimaryButton';
 import { useFocusEffect } from '@react-navigation/native';
+import useAddresses, { Address } from '../hooks/useAddresses';
+import { useAuth } from '../../../../config/auth/AuthProvider';
+import { BackIcon } from '../../../../../assets/images/BackIcon';
+import { PrimaryButton } from '../../../../components/button/PrimaryButton';
+import colors from '../../../../config/colors/Colors';
 
 const AddressesScreen = ({ navigation }: { navigation: any }) => {
     const auth = useAuth()

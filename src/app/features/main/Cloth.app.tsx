@@ -18,8 +18,10 @@ import OrderTabIcon from '../../../../assets/images/OrderTabIcon';
 import ProfileTabIcon from '../../../../assets/images/ProfileTabIcon';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { CartScreen } from '../cart/CartScreen';
-import AddressesScreen from '../address/Address';
-import { AddNewAddress } from '../address/AddNewAddress';
+import { AddNewAddress } from '../address/ui/AddNewAddress';
+import AddressesScreen from '../address/ui/Address';
+import { AddNewPaymentMethodsScreen } from '../payment/ui/AddNewPaymentMethod';
+import { PaymentMethodsScreen } from '../payment/ui/Payment';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -65,6 +67,8 @@ const ProfileStackNavigator = () => (
         <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         <Stack.Screen name="AddressesScreen" component={AddressesScreen} />
         <Stack.Screen name="AddNewAddressScreen" component={AddNewAddress} />
+        <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
+        <Stack.Screen name="AddNewPaymentMethodsScreen" component={AddNewPaymentMethodsScreen} />
     </Stack.Navigator>
 );
 const AuthNavigator = () => (

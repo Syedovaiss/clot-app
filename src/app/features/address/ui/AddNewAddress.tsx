@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import { BackIcon } from '../../../../assets/images/BackIcon';
-import { PrimaryButton } from '../../../components/button/PrimaryButton';
-import colors from '../../../config/colors/Colors';
-import { TextInputField } from '../../../components/text-input/TextInputField';
-import { isEmpty, isNotEmpty } from '../../../utils/Helpers';
+import { BackIcon } from '../../../../../assets/images/BackIcon';
+import { PrimaryButton } from '../../../../components/button/PrimaryButton';
+import colors from '../../../../config/colors/Colors';
+import { TextInputField } from '../../../../components/text-input/TextInputField';
+import { isEmpty, isNotEmpty } from '../../../../utils/Helpers';
 import Toast from 'react-native-simple-toast';
-import addAddress from './hooks/addAddress';
-import { ApiResult } from '../../../utils/APIResult';
-import { useAuth } from '../../../config/auth/AuthProvider';
+import addAddress from '../hooks/addAddress';
+import { ApiResult } from '../../../../utils/APIResult';
+import { useAuth } from '../../../../config/auth/AuthProvider';
 
 type Chip = 'Home' | 'Work' | 'Others';
 
