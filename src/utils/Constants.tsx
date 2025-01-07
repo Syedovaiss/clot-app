@@ -15,10 +15,24 @@ export const ENDPOINT_TOP_SELLING = `${BASE_URL}/api/products/top-selling`
 export const ENDPOINT_LAST_ADDED = `${BASE_URL}/api/last-ten-products`
 export const ENDPOINT_CATEGORIES = `${BASE_URL}/api/categories`
 export const ENDPOINT_PROFILE = `${BASE_URL}/api/profile`
+export const ENDPOINT_ALL_ADDRESSES = `${BASE_URL}/api/address`
+export const ENDPOINT_ADD_ADDRESSES = `${BASE_URL}/api/add-address`
+export const ENDPOINT_ALL_PAYMENT_METHODS = `${BASE_URL}/api/payment-methods`
+export const ENDPOINT_ADD_PAYMENT_METHODS = `${BASE_URL}/api/add-payment-method`
+export const ENDPOINT_WISHLIST = `${BASE_URL}/api/wishlist`
+export const ENDPOINT_REMOVE_FROM_WISHLIST = `${BASE_URL}/api/remove-from-wishlist`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
-export const getImageUrl = (imageUrl: string) => {
+export const getImageUrl = (imageUrl?: string | null) => {
+    if(imageUrl === null) {
+        return PROFILE_THUMBNAIL
+    }
     let imageURl = BASE_URL + "/"+ imageUrl
     return imageURl
 }
+
+export const SUPPORT_URL: string = "https://www.venturedive.com/contact/"
+const phoneNumber = "+923362402603"
+const helpMessage = "Hey! I need help."
+export const HELP_URL = `whatsapp://send?phone=${phoneNumber}&text=${encodeURIComponent(helpMessage)}`;
