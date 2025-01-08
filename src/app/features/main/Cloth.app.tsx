@@ -31,7 +31,7 @@ export const Cloth = () => {
     const { user } = useAuth()
     return (
         <GestureHandlerRootView style={style.container}>
-            <SafeAreaView style={style.container}>
+            <SafeAreaView style={style.safeArea}>
                 <NavigationContainer>
                     {user ? <AppNavigator /> : <AuthNavigator />}
                 </NavigationContainer>
@@ -43,6 +43,9 @@ export const Cloth = () => {
 
 const style = StyleSheet.create({
     container: {
+        flex: 1
+    },
+    safeArea: {
         flex: 1,
         marginTop: 20,
         backgroundColor: colors.light.backgroundColor
@@ -51,7 +54,7 @@ const style = StyleSheet.create({
 const HomeStackNavigator = () => (
     <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="CartScreen" component={CartScreen}  />
+        <Stack.Screen name="CartScreen" component={CartScreen} />
         <Stack.Screen name="Profile" component={ProfileStackNavigator} />
     </Stack.Navigator>
 );
@@ -71,7 +74,7 @@ const ProfileStackNavigator = () => (
         <Stack.Screen name="PaymentMethodsScreen" component={PaymentMethodsScreen} />
         <Stack.Screen name="AddNewPaymentMethodsScreen" component={AddNewPaymentMethodsScreen} />
         <Stack.Screen name="WishlistScreen" component={WishlistScreen} />
-        <Stack.Screen name='Auth' component={AuthNavigator}/>
+        <Stack.Screen name='Auth' component={AuthNavigator} />
     </Stack.Navigator>
 );
 const AuthNavigator = () => (
