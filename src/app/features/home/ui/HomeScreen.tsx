@@ -17,6 +17,7 @@ import BottomSheet, { BottomSheetScrollView, BottomSheetView } from "@gorhom/bot
 import { getProduct } from "../../../../utils/Helpers";
 import { Product } from "./Product";
 import { ProductBottomSheet } from "../../product_details/ui/ProductDetailBottomSheet";
+import { useFocusEffect } from "@react-navigation/native";
 
 export const HomeScreen = ({ navigation }: { navigation: any }) => {
     const [getUserAvatar, avatar, avatarError] = useAvatar();
@@ -43,9 +44,6 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
         setSelectedProduct(mappedProduct);
         bottomSheetRef.current?.expand(); 
     };
-    const handleSheetChanges = useCallback((index: number) => {
-        if (index === -1) setSelectedProduct(null); // Close sheet when index is -1
-    }, []);
 
     return (
         <View style={homeStyle.container}>
@@ -80,7 +78,7 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
             </ScrollView>
             {/* Bottom Sheet Component */}
          
-            <ProductBottomSheet product={selectedProduct} onClose={closeBottomSheet} bottomSheetRef={bottomSheetRef} onChange={handleSheetChanges}/>
+            <ProductBottomSheet product={selectedProduct} onClose={closeBottomSheet} bottomSheetRef={bottomSheetRef}/>
         </View>
     )
 }

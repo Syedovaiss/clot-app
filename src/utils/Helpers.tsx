@@ -38,3 +38,17 @@ export function getProduct(item: NewArrival | TopSelling): Product {
         image: item.image,
     }
 }
+
+export function getPriceValue(price?: string): number {
+    try {
+        if(price === null || price === undefined) {
+            return 0;
+        }
+        const numericPrice = parseInt(price.replace(/[^0-9.-]+/g, ''))
+        return numericPrice;
+    } catch (error: any) {
+        console.log(error)
+        return 0
+    }
+
+}
