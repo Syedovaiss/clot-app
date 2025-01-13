@@ -6,7 +6,7 @@ export const EMPTY_LAST_NAME = "Last name can't be empty!"
 export const EMPTY_PHONE = "Phone number can't be empty"
 export const EMPTY_GENDER = "Please select gender!"
 
-const BASE_URL = "http://192.168.226.135:4000"
+const BASE_URL = "http://127.0.0.1:4000"
 export const ENDPOINT_LOGIN = `${BASE_URL}/api/sign-in`
 export const ENDPOINT_SIGNUP = `${BASE_URL}/api/sign-up`
 export const ENDPOINT_ABOUT_YOURSELF = `${BASE_URL}/api/add-user-info`
