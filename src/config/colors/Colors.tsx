@@ -14,7 +14,9 @@ const colors = {
     tabBarActiveColor: '#8E6CEF',
     white: '#FFFFFF',
     bottomTabBackgroundColor: '#FFFFFF',
-    red: "#FA3636"
+    red: "#FA3636",
+    productCardBackground:"rgba(0, 0, 0, 0.5)"
+
   },
   dark: {
     backgroundColor: '#000000',
@@ -28,7 +30,8 @@ const colors = {
     tabBarActiveColor: '#8E6CEF',
     white: '#FFFFFF',
     bottomTabBackgroundColor: '#FFFFFF',
-    red: "#FA3636"
+    red: "#FA3636",
+    productCardBackground:"rgba(0, 0, 0, 0.5)"
   },
 };
 export const useColors = () => {

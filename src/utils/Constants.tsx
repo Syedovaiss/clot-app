@@ -6,6 +6,7 @@ export const EMPTY_LAST_NAME = "Last name can't be empty!"
 export const EMPTY_PHONE = "Phone number can't be empty"
 export const EMPTY_GENDER = "Please select gender!"
 
+
 const BASE_URL = "http://127.0.0.1:4000"
 export const ENDPOINT_LOGIN = `${BASE_URL}/api/sign-in`
 export const ENDPOINT_SIGNUP = `${BASE_URL}/api/sign-up`
@@ -21,6 +22,8 @@ export const ENDPOINT_ALL_PAYMENT_METHODS = `${BASE_URL}/api/payment-methods`
 export const ENDPOINT_ADD_PAYMENT_METHODS = `${BASE_URL}/api/add-payment-method`
 export const ENDPOINT_WISHLIST = `${BASE_URL}/api/wishlist`
 export const ENDPOINT_REMOVE_FROM_WISHLIST = `${BASE_URL}/api/remove-from-wishlist`
+export const ENDPOINT_ADD_TO_CART = `${BASE_URL}/api/add-to-cart`
+export const ENDPOINT_ADD_TO_WISHLIST = `${BASE_URL}/api/add-to-wishlist`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';

@@ -4,7 +4,7 @@ import FastImage from 'react-native-fast-image';
 import { getImageUrl } from '../../../../utils/Constants';
 import colors from '../../../../config/colors/Colors';
 
-type NewArrival = {
+export type NewArrival = {
   _id: string;
   title: string;
   description: string,
