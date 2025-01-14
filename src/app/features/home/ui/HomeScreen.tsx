@@ -65,7 +65,7 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
                 <View style={homeStyle.titleStyle} >
                     <Text style={homeStyle.titleTextStyle}>Categories</Text>
                 </View>
-                {categories ? <Categories categories={categories} onCategoryClicked={(item) => console.log(item)} /> : <Text>No Categories Available</Text>}
+                {categories ? <Categories categories={categories} onCategoryClicked={(item) => navigation.navigate("Products",{categoryId: item._id})} /> : <Text>No Categories Available</Text>}
                 <View style={homeStyle.titleStyle} >
                     <Text style={homeStyle.titleTextStyle}>New In</Text>
                 </View>

@@ -25,6 +25,7 @@ import { PaymentMethodsScreen } from '../payment/ui/Payment';
 import { WishlistScreen } from '../wishlist/ui/Wishlist';
 import { CheckoutScreen } from '../checkout/ui/CheckoutScreen';
 import { OrderDetails } from '../order_details/OrderDetails';
+import ProductScreen from '../products/ui/ProductScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -56,6 +57,7 @@ const style = StyleSheet.create({
 const HomeStackNavigator = () => (
     <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name='Products' component={ProductScreen}/>
         <Stack.Screen name="CartScreen" component={CartScreen} />
         <Stack.Screen name="Profile" component={ProfileStackNavigator} />
         <Stack.Screen name='CheckoutScreen' component={CheckoutScreen}/>
