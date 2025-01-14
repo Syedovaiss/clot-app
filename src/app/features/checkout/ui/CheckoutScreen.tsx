@@ -15,6 +15,7 @@ import Toast from 'react-native-simple-toast'
 import placeOrder, { PlaceOrderRequest } from "../hook/placeOrder";
 import { useAuth } from "../../../../config/auth/AuthProvider";
 import { isNotEmpty } from "../../../../utils/Helpers";
+import { ClothHeader } from "../../../../components/header/Header";
 
 export const CheckoutScreen = ({ navigation, route }: { navigation: any, route: any }) => {
     const { products, amount } = route.params;
@@ -76,10 +77,13 @@ export const CheckoutScreen = ({ navigation, route }: { navigation: any, route: 
         </View>
     );
 
+    const onBackPress = () => {
+        navigation.goBack()
+    }
     return (
         <ScrollView style={styles.container}>
             {/* Toolbar */}
-            <Text style={styles.toolbarText}>Checkout</Text>
+            <ClothHeader title="Checkout" onBackPress={onBackPress} />
 
             {/* Product List */}
             <View style={styles.productList}>

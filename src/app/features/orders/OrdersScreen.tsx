@@ -21,7 +21,7 @@ export const OrdersScreen = ({ navigation }: { navigation: any }) => {
         }, [])
     );
     const onOrderPress = (orderId: string) => {
-        navigation.navigate("OrderDetailScreen", { orderId }); 
+        navigation.navigate("OrderDetails", { orders }); 
     };
 
     const renderItem = ({ item }: { item: { _id: string; cartItems: any[] } }) => (

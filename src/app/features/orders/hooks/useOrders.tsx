@@ -33,7 +33,7 @@ interface CartItem {
     __v: number;
   }
   
-  interface OrderResponse {
+  export interface OrderResponse {
     data: Order[];
     shippingAddress: string;
     paymentInfo: PaymentInfo;
