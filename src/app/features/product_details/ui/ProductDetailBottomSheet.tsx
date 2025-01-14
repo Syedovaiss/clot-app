@@ -12,8 +12,7 @@ import HeartFilledIcon from "../../../../../assets/images/HeartFilledIcon";
 import CircularColor from "../../../../components/circular_color_dot/CircularColorDot";
 import { getPriceValue, isNotEmpty } from "../../../../utils/Helpers";
 import Toast from 'react-native-simple-toast'
-import { CartContext } from "../../../../config/cart_state/CartDataProvider";
-import { CartItem } from "../../cart/hook/addToCart";
+import addToCart, { CartItem } from "../../cart/hook/addToCart";
 import addToWishlist from "../../wishlist/hooks/addToWishlist";
 import { useAuth } from "../../../../config/auth/AuthProvider";
 import removeWishListItem from "../../wishlist/hooks/removeWishListItem";
@@ -21,7 +20,7 @@ import removeWishListItem from "../../wishlist/hooks/removeWishListItem";
 
 export const ProductBottomSheet = ({ product, onClose, bottomSheetRef }: { product: Product | null, onClose: () => void, bottomSheetRef: RefObject<BottomSheetMethods> }) => {
 
-    const { dispatch } = useContext(CartContext);
+    const [addItemToCart,cartResponse,cartError] = addToCart();
     const auth = useAuth();
     const [addItemToWishlist, wishListAddResult, wishListAddError] = addToWishlist();
     const [removeItemFromWishlist, wishListRemovalResult, wishListRemovalError] = removeWishListItem();
@@ -63,7 +62,7 @@ export const ProductBottomSheet = ({ product, onClose, bottomSheetRef }: { produ
                 size: selectedSize,
                 color: selectedColor
             };
-            dispatch({ type: 'ADD_ITEM', item: cartItem });
+            addItemToCart(auth.user,[cartItem])
             setSelectedColor(null)
             setSelectedSize(null)
             onClose()

@@ -24,6 +24,10 @@ export const ENDPOINT_WISHLIST = `${BASE_URL}/api/wishlist`
 export const ENDPOINT_REMOVE_FROM_WISHLIST = `${BASE_URL}/api/remove-from-wishlist`
 export const ENDPOINT_ADD_TO_CART = `${BASE_URL}/api/add-to-cart`
 export const ENDPOINT_ADD_TO_WISHLIST = `${BASE_URL}/api/add-to-wishlist`
+export const ENDPOINT_CART = `${BASE_URL}/api/cart`
+export const ENDPOINT_INCREMENT_CART_ITEM = `${BASE_URL}/api/cart/increase-item`
+export const ENDPOINT_DECREMENT_CART_ITEM = `${BASE_URL}/api/cart/decrease-item`
+export const ENDPOINT_CLEAR_CART_ITEM = `${BASE_URL}/api/cart/clear`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
