@@ -50,7 +50,7 @@ export const CartScreen = ({ navigation }: { navigation: any }) => {
             <Text style={styles.contentText}>Your Cart is Empty</Text>
             <PrimaryButton
                 title="Explore Categories"
-                onClick={() => navigation.navigate("Home")} 
+                onClick={() => navigation.navigate("HomeScreen")} 
             />
         </View>
     );
@@ -120,7 +120,12 @@ export const CartScreen = ({ navigation }: { navigation: any }) => {
 
             <PrimaryButton
                 title="Checkout"
-                onClick={() => navigation.navigate("Checkout")} // Navigating to Checkout screen
+                onClick={() =>
+                    navigation.navigate("CheckoutScreen", {
+                        products:cartItems?.products,
+                        amount: cartItems?.amount
+                    })
+                } 
             />
         </View>
     );

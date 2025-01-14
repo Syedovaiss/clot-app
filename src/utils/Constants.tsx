@@ -28,6 +28,7 @@ export const ENDPOINT_CART = `${BASE_URL}/api/cart`
 export const ENDPOINT_INCREMENT_CART_ITEM = `${BASE_URL}/api/cart/increase-item`
 export const ENDPOINT_DECREMENT_CART_ITEM = `${BASE_URL}/api/cart/decrease-item`
 export const ENDPOINT_CLEAR_CART_ITEM = `${BASE_URL}/api/cart/clear`
+export const ENDPOINT_PLACE_ORDER = `${BASE_URL}/api/place-order`
 
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
