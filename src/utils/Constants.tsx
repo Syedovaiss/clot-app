@@ -29,7 +29,7 @@ export const ENDPOINT_INCREMENT_CART_ITEM = `${BASE_URL}/api/cart/increase-item`
 export const ENDPOINT_DECREMENT_CART_ITEM = `${BASE_URL}/api/cart/decrease-item`
 export const ENDPOINT_CLEAR_CART_ITEM = `${BASE_URL}/api/cart/clear`
 export const ENDPOINT_PLACE_ORDER = `${BASE_URL}/api/place-order`
-
+export const ENDPOINT_ORDERS = `${BASE_URL}/api/orders`
 
 export const PROFILE_THUMBNAIL = 'https://www.w3schools.com/w3images/avatar2.png';
 export const getImageUrl = (imageUrl?: string | null) => {

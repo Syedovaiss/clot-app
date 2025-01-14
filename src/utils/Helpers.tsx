@@ -52,3 +52,7 @@ export function getPriceValue(price?: string): number {
     }
 
 }
+
+export function buildOrderNumber(id: string): string {
+    return id.slice(-5);
+}

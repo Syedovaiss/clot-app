@@ -24,6 +24,7 @@ import { AddNewPaymentMethodsScreen } from '../payment/ui/AddNewPaymentMethod';
 import { PaymentMethodsScreen } from '../payment/ui/Payment';
 import { WishlistScreen } from '../wishlist/ui/Wishlist';
 import { CheckoutScreen } from '../checkout/ui/CheckoutScreen';
+import { OrderDetails } from '../order_details/OrderDetails';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -65,6 +66,7 @@ const HomeStackNavigator = () => (
 const OrdersStackNavigator = () => (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="OrdersScreen" component={OrdersScreen} />
+        <Stack.Screen name='OrderDetails' component={OrderDetails} />
     </Stack.Navigator>
 );
 

@@ -13,6 +13,7 @@ import CircularColor from "../../../components/circular_color_dot/CircularColorD
 import incrementCartItem from "./hook/incrementCartItem";
 import decrementCartItem from "./hook/decrementCartItem";
 import useClearCart from "./hook/useClearCart";
+import { ClothHeader } from "../../../components/header/Header";
 
 export const CartScreen = ({ navigation }: { navigation: any }) => {
     const auth = useAuth();
@@ -130,9 +131,13 @@ export const CartScreen = ({ navigation }: { navigation: any }) => {
         </View>
     );
 
+    const onBackPress = () => {
+        navigation.goBack()
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.toolbarText}>Cart</Text>
+            <ClothHeader title="Cart" onBackPress={onBackPress} />
             {cartItems?.products ? renderCartItems() : emptyView()}
         </View>
     );
