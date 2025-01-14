@@ -3,7 +3,6 @@ import SplashScreen from './src/app/features/splash/SplashScreen';
 import { ThemeProvider } from './src/config/theme/ThemeProvider';
 import { AuthProvider } from './src/config/auth/AuthProvider';
 import { Cloth } from './src/app/features/main/Cloth.app';
-import { CartProvider } from './src/config/cart_state/CartDataProvider';
 
 function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,9 +24,7 @@ function App(): React.JSX.Element {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <CartProvider>
           <Cloth />
-        </CartProvider>
       </AuthProvider>
     </ThemeProvider>
   );
