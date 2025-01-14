@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 16,
+        marginTop:50
     },
     profileContainer: {
         width: 50,

@@ -90,7 +90,7 @@ export const ProductBottomSheet = ({ product, onClose, bottomSheetRef }: { produ
                 <View style={styles.imageContainer}>
                     <FastImage source={{ uri: getImageUrl(product?.image), priority: FastImage.priority.high, }} style={styles.productImage} resizeMode={FastImage.resizeMode.cover} />
                     <TouchableOpacity style={styles.heartIcon} onPress={onHeartIconTapped}>
-                        {isFavourite ? <HeartFilledIcon width={32} height={32} /> : <HeartUnfilledIcon width={32} height={32} />}
+                        {isFavourite ? <HeartFilledIcon width={24} height={24} /> : <HeartUnfilledIcon width={24} height={24} />}
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.closeIcon} onPress={onClose}>
                         <CloseIcon width={24} height={24} />
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
         left: 20,
         backgroundColor: colors.light.fieldBackground,
         borderRadius: 50,
-        padding: 5,
+        padding: 5
     },
     closeIcon: {
         position: "absolute",

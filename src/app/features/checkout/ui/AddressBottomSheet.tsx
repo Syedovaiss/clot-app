@@ -29,7 +29,7 @@ export const AddressBottomSheet = ({
     return (
         <BottomSheet
             snapPoints={['50%', '90%']}
-            index={addresses.length ? 0 : -1}
+            index={ -1}
             ref={bottomSheetRef}
             onClose={onClose}
         >
