@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FlatList, View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import HeartFilledIcon from '../../../../../assets/images/HeartFilledIcon';
 import useWishList from '../hooks/useWishList';
@@ -8,14 +8,30 @@ import { getImageUrl } from '../../../../utils/Constants';
 import colors from '../../../../config/colors/Colors';
 import removeWishListItem from '../hooks/removeWishListItem';
 import { ApiResult } from '../../../../utils/APIResult';
-import { isNotEmpty } from '../../../../utils/Helpers';
+import { getProduct, isNotEmpty } from '../../../../utils/Helpers';
 import Toast from 'react-native-simple-toast'
 import { BackIcon } from '../../../../../assets/images/BackIcon';
+import BottomSheet from '@gorhom/bottom-sheet';
+import { Product } from '../../home/ui/Product';
+import { ProductBottomSheet } from '../../product_details/ui/ProductDetailBottomSheet';
 
 export const WishlistScreen = ({ navigation }: { navigation: any }) => {
     const [getWishlist, wishlist, wishlistError] = useWishList();
     const [removeProduct, result, removalError] = removeWishListItem();
-    const auth = useAuth()
+    const auth = useAuth();
+    const bottomSheetRef = useRef<BottomSheet>(null);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
+    const closeBottomSheet = () => {
+        setSelectedProduct(null);
+        bottomSheetRef.current?.close();
+    };
+    const openBottomSheet = (item: any) => {
+        let mappedProduct = getProduct(item)
+        setSelectedProduct(mappedProduct);
+        bottomSheetRef.current?.expand();
+    };
+
 
     useFocusEffect(
         useCallback(() => {
@@ -35,7 +51,6 @@ export const WishlistScreen = ({ navigation }: { navigation: any }) => {
         removeProduct(id, auth.user)
     };
 
-
     return (
         <View style={styles.container}>
             {/* Back Button */}
@@ -46,24 +61,28 @@ export const WishlistScreen = ({ navigation }: { navigation: any }) => {
                 data={wishlist}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.productContainer}>
-                            <TouchableOpacity
-                                style={styles.favoriteIcon}
-                                onPress={() => toggleFavorite(item._id)}
-                            >
-                                <HeartFilledIcon width={50} height={50} />
-                            </TouchableOpacity>
+                        <TouchableOpacity style={styles.productContainer} onPress={() => openBottomSheet(item)}>
+                            <View>
+                                <TouchableOpacity
+                                    style={styles.favoriteIcon}
+                                    onPress={() => toggleFavorite(item._id)}
+                                >
+                                    <HeartFilledIcon width={50} height={50} />
+                                </TouchableOpacity>
 
-                            <Image source={{ uri: getImageUrl(item.image) }} style={styles.productImage} />
-                            <Text style={styles.productTitle}>{item.title}</Text>
-                            <Text style={styles.productPrice}>{item.price}</Text>
-                        </View>
+                                <Image source={{ uri: getImageUrl(item.image) }} style={styles.productImage} />
+                                <Text style={styles.productTitle}>{item.title}</Text>
+                                <Text style={styles.productPrice}>{item.price}</Text>
+                            </View>
+                        </TouchableOpacity>
                     )
                 }}
                 keyExtractor={(item) => item._id}
                 numColumns={2}
                 contentContainerStyle={styles.grid}
             />}
+
+            <ProductBottomSheet product={selectedProduct} onClose={closeBottomSheet} bottomSheetRef={bottomSheetRef} />
 
         </View>
     );
@@ -116,6 +135,6 @@ const styles = StyleSheet.create({
     },
     noItemText: {
         fontSize: 20,
-        justifyContent:'center'
+        justifyContent: 'center'
     }
 });
