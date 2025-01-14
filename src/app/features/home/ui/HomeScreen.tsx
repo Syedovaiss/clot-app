@@ -24,7 +24,6 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
     const [getCategories, categories, categoriesError] = useCateogries();
     const [getNewArrival, newArrivals, newArrivalError] = useNewArrival();
     const [getTopSellingProducts, topSellingProducts, topSellingProductsError] = useTopSellingProducts();
-    const [search, searchResult, searchError] = useSearch();
     const auth = useAuth();
     const bottomSheetRef = useRef<BottomSheet>(null);
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -56,7 +55,7 @@ export const HomeScreen = ({ navigation }: { navigation: any }) => {
                 <ClothSearchBar
                     placeholder="Search"
                     onQuerySubmit={(text) => {
-                        console.log(text);
+                        navigation.navigate("SearchProduct", {query: text})
                     }}
                     onTextChanged={(text) => {
                         console.log(text)

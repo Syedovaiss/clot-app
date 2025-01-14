@@ -26,6 +26,7 @@ import { WishlistScreen } from '../wishlist/ui/Wishlist';
 import { CheckoutScreen } from '../checkout/ui/CheckoutScreen';
 import { OrderDetails } from '../order_details/OrderDetails';
 import ProductScreen from '../products/ui/ProductScreen';
+import SearchProduct from '../search/ui/SearchProduct';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -61,6 +62,7 @@ const HomeStackNavigator = () => (
         <Stack.Screen name="CartScreen" component={CartScreen} />
         <Stack.Screen name="Profile" component={ProfileStackNavigator} />
         <Stack.Screen name='CheckoutScreen' component={CheckoutScreen}/>
+        <Stack.Screen name='SearchProduct' component={SearchProduct}/>
     </Stack.Navigator>
 );
 
