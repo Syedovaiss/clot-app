@@ -23,6 +23,7 @@ import AddressesScreen from '../address/ui/Address';
 import { AddNewPaymentMethodsScreen } from '../payment/ui/AddNewPaymentMethod';
 import { PaymentMethodsScreen } from '../payment/ui/Payment';
 import { WishlistScreen } from '../wishlist/ui/Wishlist';
+import { CheckoutScreen } from '../checkout/ui/CheckoutScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -56,6 +57,7 @@ const HomeStackNavigator = () => (
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="CartScreen" component={CartScreen} />
         <Stack.Screen name="Profile" component={ProfileStackNavigator} />
+        <Stack.Screen name='CheckoutScreen' component={CheckoutScreen}/>
     </Stack.Navigator>
 );
 
@@ -91,7 +93,7 @@ const AppNavigator = () => (
         screenOptions={{
             tabBarStyle: {
                 backgroundColor: colors.light.bottomTabBackgroundColor,
-                height: 60,
+                height: 80,
                 borderTopWidth: 1
             },
             headerShown: false,
