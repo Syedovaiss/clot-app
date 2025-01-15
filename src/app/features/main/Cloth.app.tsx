@@ -8,7 +8,7 @@ import { HomeScreen } from '../home/ui/HomeScreen';
 import { NotificationsScreen } from '../notifications/NotificationScreen';
 import { OrdersScreen } from '../orders/OrdersScreen';
 import { ProfileScreen } from '../profile/ProfileScreen';
-import { StatusBar, StyleSheet } from 'react-native';
+import { Platform, StatusBar, StyleSheet } from 'react-native';
 import colors from '../../../config/colors/Colors';
 import { RegisterScreen } from '../register/ui/Register.ui';
 import { AboutScreen } from '../about/ui/About';
@@ -51,7 +51,7 @@ const style = StyleSheet.create({
     },
     safeArea: {
         flex: 1,
-        marginTop: 20,
+        marginTop: Platform.OS === 'ios' ? 20 : 0,
         backgroundColor: colors.light.backgroundColor
     }
 })

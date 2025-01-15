@@ -1,3 +1,5 @@
+import { Platform } from "react-native"
+
 export const EMPTY_EMAIL = "Email can't be empty!"
 export const EMPTY_PASSWORD = "Password can't be empty!"
 export const EMPTY_STRING = ""
@@ -6,8 +8,15 @@ export const EMPTY_LAST_NAME = "Last name can't be empty!"
 export const EMPTY_PHONE = "Phone number can't be empty"
 export const EMPTY_GENDER = "Please select gender!"
 
+const getHostName = () => {
+    if(Platform.OS == 'ios') {
+        return '127.0.0.01'
+    } else {
+        return '10.0.2.2'
+    }
+}
 
-const BASE_URL = "http://127.0.0.1:4000"
+const BASE_URL = `http://${getHostName()}:4000`
 export const ENDPOINT_LOGIN = `${BASE_URL}/api/sign-in`
 export const ENDPOINT_SIGNUP = `${BASE_URL}/api/sign-up`
 export const ENDPOINT_ABOUT_YOURSELF = `${BASE_URL}/api/add-user-info`

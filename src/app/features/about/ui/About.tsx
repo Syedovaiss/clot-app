@@ -77,21 +77,23 @@ export const AboutScreen: React.ComponentType<AboutScreenProps> = ({ navigation,
                 ))}
             </View>
             <Text style={aboutStyle.bodyTextStyle}>How old are you?</Text>
-            <View style={aboutStyle.pickerContainer}>
+            <View>
                 <Picker
                     selectedValue={selectedAgeRange}
                     onValueChange={(itemValue) => setSelectedAgeRange(itemValue)}
-                    style={aboutStyle.picker}
                 >
                     {ageRanges.map((range) => (
                         <Picker.Item key={range} label={range} value={range} />
                     ))}
                 </Picker>
             </View>
-
-            <PrimaryButton title="Finish" onClick={onSubmitInfo} />
+    
+            <View style={aboutStyle.buttonContainer}>
+                <PrimaryButton title="Finish" onClick={onSubmitInfo} />
+            </View>
         </View>
     )
+    
 }
 
 

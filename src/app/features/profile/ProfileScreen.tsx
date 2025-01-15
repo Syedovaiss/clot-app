@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Linking, Alert } from 'react-native';
 import FastImage from 'react-native-fast-image'; // if you're using FastImage for optimized images
 import colors from '../../../config/colors/Colors';
@@ -7,6 +7,7 @@ import { useAuth } from '../../../config/auth/AuthProvider';
 import { getImageUrl, HELP_URL, SUPPORT_URL } from '../../../utils/Constants';
 import RightArrow from '../../../../assets/images/RightArrow';
 import Toast from 'react-native-simple-toast';
+import { useFocusEffect } from '@react-navigation/native';
 
 export const ProfileScreen = ({ navigation }: { navigation: any }) => {
     const auth = useAuth()
@@ -42,10 +43,16 @@ export const ProfileScreen = ({ navigation }: { navigation: any }) => {
             { cancelable: false }
         );
     };
+  const fetchUserInfo = useCallback(() => {
+    if (!userInfo) { 
+        getUserInfo(auth.user);
+    }
+}, [auth.user, getUserInfo, userInfo]);
 
-    useEffect(() => {
-        getUserInfo(auth.user)
-    }, [])
+    useFocusEffect(() => {
+        fetchUserInfo()
+    })
+    
 
     return (
         <View style={styles.container}>
