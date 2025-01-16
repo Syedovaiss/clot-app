@@ -1,79 +1,105 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Cloth App
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Clot App is a comprehensive e-commerce application designed for learning purposes. It encompasses a wide range of essential features that simulate the core functionalities of a real-world online shopping platform. This app is ideal for those looking to understand and develop skills in e-commerce app development.
 
-## Step 1: Start the Metro Server
+## Key Features
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+**Search:** Effortlessly search for products using an intuitive search bar.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+**Login & Signup:** Secure account management, allowing users to create accounts and log in to personalize their shopping experience.
 
-```bash
-# using npm
-npm start
+**Home:** Browse through the homepage featuring various categories and highlighted products.
 
-# OR using Yarn
-yarn start
-```
+**Address:** Add and manage multiple shipping addresses for hassle-free checkout.
 
-## Step 2: Start your Application
+**Payment:** Safe and secure payment gateway integration for smooth transactions.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+**Wishlist:** Save favorite products to your wishlist for future reference.
+
+**Products:** Discover a wide variety of products with detailed descriptions and images.
+
+**Product Details:** View in-depth product information including specifications, reviews, and ratings.
+
+**Profile:** Manage personal details and preferences, including email, contact information, and order history.
+
+**Cart:** Add products to your shopping cart and modify quantities before proceeding to checkout.
+
+**Checkout:** Complete your purchase with an easy and guided checkout process.
+
+**Order Placement:** Confirm and place your order securely.
+
+**Past Orders:** View a history of your previous orders with tracking details.
+
+Clot App offers a hands-on approach to understanding e-commerce app development, with a focus on user experience, smooth transactions, and detailed product interactions. It’s the perfect starting point for anyone interested in building a robust e-commerce platform from the ground up.
+
+
+## 🔗 Postman Collection
+
+
+[Download Now](https://drive.google.com/file/d/1hIRQnRFEww9cl_zLTx9HdY2iHO2EbQJV/view?usp=share_link)
+
+## Demo
+
+[![Demo Link](https://img.youtube.com/vi/G-c77lPEDME/0.jpg)](https://www.youtube.com/watch?v=G-c77lPEDME)
+
+
+## Installation
+
+Things which need to be setup before Installation
 
 ### For Android
 
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
+- JDK
+- Android SDK
+- Android Emulator
+- Android Studio
+- Gradle
 
 ### For iOS
 
-```bash
-# using npm
-npm run ios
+- Xcode
+- Cocoapods
+- ios-deploy
+- iOS Simulator
+- Ruby
 
-# OR using Yarn
-yarn ios
+### Other Installations
+- Watchman
+
+
+## After installing above dependencies
+
+```
+npm install
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### For running iOS app
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```
+cd ios
+```
+```
+pod install
+```
+```
+cd ..
+```
 
-## Step 3: Modifying your App
+### For Running App on Simulator
 
-Now that you have successfully run the app, let's modify it.
+```
+npm run start
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+    
+## Appendix
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+- [Getting Started with React Native](https://reactnative.dev/docs/environment-setup)
+- [Typescript Lang](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html)
+- [Getting Started with React Navigation](https://reactnavigation.org/docs/getting-started)
+- [Gorham BottomSheet](https://gorhom.dev/react-native-bottom-sheet/usage)
+- [NodeJS Setup](https://nodejs.org/en/download)
+- [Android Studio Setup](https://developer.android.com/studio?gclsrc=aw.ds&gad_source=1&gbraid=0AAAAAC-IOZl5HffIbfN7xt6781eSj3nCp&gclid=Cj0KCQiA-aK8BhCDARIsAL_-H9knEJ3D4-cAG88wsE-DL88N4OJs5mSTKmd3OHtNuQsBRl-BkmuzxoAaAu-OEALw_wcB)
+- [JDK Setup](https://www.oracle.com/pk/java/technologies/downloads/)
 
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
