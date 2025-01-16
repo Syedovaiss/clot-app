@@ -34,8 +34,11 @@ Clot App is a comprehensive e-commerce application designed for learning purpose
 Clot App offers a hands-on approach to understanding e-commerce app development, with a focus on user experience, smooth transactions, and detailed product interactions. It’s the perfect starting point for anyone interested in building a robust e-commerce platform from the ground up.
 
 
-## 🔗 Postman Collection
+## 🔗 Backend Codebase
 
+[Clot-Backend](https://github.com/Syedovaiss/clot-backend)
+
+## 🔗 Postman Collection
 
 [Download Now](https://drive.google.com/file/d/1hIRQnRFEww9cl_zLTx9HdY2iHO2EbQJV/view?usp=share_link)
 
